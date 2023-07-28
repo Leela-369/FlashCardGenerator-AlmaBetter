@@ -1,4 +1,5 @@
 import React from "react";
+import { motion, AnimatePresence } from 'framer-motion'
 
 export const CreateNewFlashCard = () => {
   return (
@@ -19,7 +20,6 @@ export const CreateNewFlashCard = () => {
           </div>
         {/* main group image logic here using formik */}
         </div>
-        </div>
         <div className="mt-2 w-3/4">
           <p className="font-bold text-[13px] mb-2">Description</p>
           <textarea
@@ -30,6 +30,29 @@ export const CreateNewFlashCard = () => {
           />
           {/* errors to be shown here */}
       </div>
+        </div>
+        <div className="mt-3 bg-white w-full px-3 py-3 ">
+        <AnimatePresence>
+       {/* index */}
+          </AnimatePresence>
+        <div className="mt-10">
+        
+        <button type="button" //onClick
+        className="text-blue-500 text-[13px] "
+        >
+          +Add Term 
+        </button>
+        </div>
+      </div>
+
+      <div className="flex justify-center mt-10"
+      >
+      <button type="button"
+      //onClick
+     className="py-2 bg-red-600 w-48 text-white  text-[13px] rounded"
+      >Create Card</button>
+      </div>
+       
         </div>
         </form>
   )
