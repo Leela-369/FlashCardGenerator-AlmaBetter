@@ -1,6 +1,6 @@
 import React, { useRef, useState} from "react";
 import { useDispatch } from "react-redux";
-import { addFlashcard } from "./flashCardSlice";
+import { addFlashcard } from "../features/flashCardSlice";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 import {useFormik} from 'formik'
 import schema from '../validation/schema'
