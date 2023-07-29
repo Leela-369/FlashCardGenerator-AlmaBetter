@@ -28,10 +28,10 @@ const displayedFlashcards = showAllCards ? flashcards : flashcards.slice(0, maxV
         {displayedFlashcards.map((flashcard, flashcardIndex) => (
             <div key={flashcardIndex}  className='flex flex-shrink-0'>
               <div className='flex flex-col items-center'>
-              <img src={flashcard?.mainGroup?.groupImage?.mainImageURL} alt='' className=' w-12 h-12 rounded-full z-10 position relative top-3 shadow-md'/>
+              <img src={flashcard?.mainGroup?.mainGroupImage?.mainImageURL} alt='' className=' w-12 h-12 rounded-full z-10 position relative top-3 shadow-md'/>
               <div className='bg-white w-72 h-48 flex flex-col space-y-3 items-center z-0'>
-                <h1 className='text-[15px] font-bold mt-8'>{flashcard?.mainGroup?.groupName}</h1>
-                <p className='text-[10px] text-center'>{flashcard?.mainGroup?.description} </p>
+                <h1 className='text-[15px] font-bold mt-8'>{flashcard?.mainGroup?.mainGroupName}</h1>
+                <p className='text-[10px] text-center'>{flashcard?.mainGroup?.mainGroupDescription} </p>
                 <p className='text-[13px]'>{flashcard.termGroup.length} cards</p>
                 <nav>
                 <Link to={`/termGroup/${flashcardIndex}`}>
