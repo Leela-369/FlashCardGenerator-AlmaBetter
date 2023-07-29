@@ -1,9 +1,11 @@
-import { CreateNewFlashCard } from "./features/CreateNewFlashCard";
+import FlashCard from "./features/FlashCard";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <div className="App">
-      <CreateNewFlashCard/>
+      <Navbar/>
+      <FlashCard/>
     </div>
   );
 }

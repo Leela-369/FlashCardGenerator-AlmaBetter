@@ -1,5 +1,5 @@
 import React from 'react'
-import { selectAll } from '../Redux/FlashCardSlice'
+import { selectAll } from '../../features/flashCardSlice'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'

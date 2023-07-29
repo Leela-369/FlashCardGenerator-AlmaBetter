@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route, NavLink, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import CreateNewFlashCard from "../components/CreateNewFlashCard";
+import {CreateNewFlashCard} from "../components/CreateNewFlashCard";
 import { MainGroup } from "../components/myflashcards_components/MainGroup";
 import './flashCard.css';
 
