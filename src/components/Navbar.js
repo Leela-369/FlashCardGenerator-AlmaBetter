@@ -10,7 +10,7 @@ const Navbar = () => {
         {/* Displaying the Almabetter logo image */}
         <img
           src={Almabetterlogo}
-          alt="HeaderImage"
+          alt="AlmaBetter logo"
           className="w-22 h-9 ml-8 "
         />
         {/* Displaying the title of the Navbar */}

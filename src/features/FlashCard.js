@@ -1,4 +1,3 @@
-// Importing required dependencies and components
 import React from "react";
 import { Routes, Route, NavLink, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
