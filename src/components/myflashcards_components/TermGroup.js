@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectAll } from '../Redux/FlashCardSlice';
+import { selectAll } from '../../features/flashCardSlice';
 import { useParams } from 'react-router-dom';
 import { FaGreaterThan, FaLessThan } from 'react-icons/fa';
 import { AiOutlineArrowLeft, AiOutlineCopy, AiOutlineDownload, AiOutlinePrinter } from 'react-icons/ai';

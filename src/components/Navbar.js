@@ -1,5 +1,5 @@
 import React from "react";
-import Almabetterlogo from '../assets/Almabetterlogo.png';  
+import Almabetterlogo from '../assets/AlmaBetterlogo.png';
 // Importing the image file 'Almabetterlogo.png' from the '../assets' directory
 
 

@@ -14,17 +14,17 @@ const FlashCard = () => {
     <div>
       {/* Main container */}
       <div className="flex flex-col w-3/4 p-2 mx-auto overflow-x-hidden Container">
-        <h1 className="text-[18px] font-bold mb-1">CreateFlashcard</h1>
+        <h1 className="text-[18px] font-bold mb-1">Create Flashcard</h1>
         <div className="border-b border-black">
           {/* Navigation Links */}
           <nav className="my-1">
             {/* NavLink to Create New Flashcard */}
             <NavLink to="/" className="mr-6 text-[15px] font-semibold under-line">
-              Create new
+              Create New
             </NavLink>
             {/* NavLink to MyFlashCards */}
             <NavLink to="/mainGroup" className="text-[15px] font-semibold under-line">
-              MyFlashCards
+              My FlashCards
             </NavLink>
           </nav>
         </div>

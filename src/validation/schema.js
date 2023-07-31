@@ -1,6 +1,6 @@
-//contains schema for validation of user entries
-import * as Yup from 'yup' 
+import * as Yup from 'yup';
 
+//contains schema for validation of user entries
 const schema = Yup.object().shape({
     mainGroup: Yup.object().shape({
       mainGroupName: Yup.string()

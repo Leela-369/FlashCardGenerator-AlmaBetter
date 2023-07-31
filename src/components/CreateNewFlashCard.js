@@ -40,7 +40,7 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
     false
   );
 
-  // State to track whether term images are uploaded (array with initialTermGroup.length elements, all set to false initially)
+  // State to track whether term images are uploaded (array with initialTermGroup.length elements, all set to false initially
   const [isTermImageUploaded, setIsTermImageUploaded] = useState(
     Array(initialTermGroup.length).fill(false)
   );
@@ -93,7 +93,7 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
     ]);
   };
 
-  // Function to remove a term field from the form (except the first one, as it should always be there)
+  // Function to remove a term field from the form (except the first one, as it should always be there
   const removeTermField = (index) => {
     if (index === 0) {
       return;
