@@ -203,11 +203,11 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
               onBlur={formik.handleBlur}
               value={formik.values.mainGroup.mainGroupDescription}
             />
-            {formik.touched.mainGroup?.description &&
-              formik.errors.mainGroup?.description && (
+            {formik.touched.mainGroup?.mainGroupDescription &&
+              formik.errors.mainGroup?.mainGroupDescription && (
                 // Formik Error Message for Main Group Description
                 <div className="text-red-600 text-[10px]">
-                  {formik.errors.mainGroup.description}
+                  {formik.errors.mainGroup.mainGroupDescription}
                 </div>
               )}
           </div>
