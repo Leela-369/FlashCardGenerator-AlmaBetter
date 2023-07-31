@@ -31,10 +31,13 @@ export const TermGroup = () => {
   
     const handlePrevSlide = () => {
       setCurrentSlide((prevSlide) => (prevSlide + totalPictures - 1) % totalPictures);
+     
     };
   
     const handleNextSlide = () => {
-      setCurrentSlide((prevSlide) => (prevSlide + 1) % totalPictures);
+      setCurrentSlide((prevSlide) => (prevSlide + 1) % totalPictures );
+      console.log(currentSlide)
+      
     };
   
     const handleTermClick = (index) => {
@@ -118,7 +121,7 @@ export const TermGroup = () => {
           {/* Flashcard Image and Description */}
           <div className='bg-white flex flex-row w-4/5 h-80 p-20px'>
             <motion.img
-              src={flashcards[flashcardId]?.termGroup[currentSlide]?.termImage?.termImageURL}
+              src={flashcards[flashcardId]?.termGroup[currentSlide]?.termGroupImage?.termImageURL}
               className='ml-4 w-1/2 h-64 mt-5'
               alt='term img'
               initial={{ opacity: 0, x: 100  }}
@@ -153,8 +156,8 @@ export const TermGroup = () => {
         </div>
           
            {/* Previous flashcard Button */}
-        <div className='flex flex-row justify-center mt-3 space-x-3' onClick={handlePrevSlide}>
-          <button className='text-[15px]' >
+        <div className='flex flex-row justify-center mt-3 space-x-3' >
+          <button className='text-[15px]'onClick={handlePrevSlide} >
           <FaLessThan />
           </button>
 

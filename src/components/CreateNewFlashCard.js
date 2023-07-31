@@ -229,7 +229,7 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
                 exit={{ opacity: 0, y: -50 }}
                 transition={{ duration: 0.5 }}
               >
-                <div className="w-16 h-8 mt-4 flex items-center justify-center bg-blue-500 rounded-full text-white text-[14px] font-bold">
+                <div className="w-16 h-8 mt-7 flex items-center justify-center bg-rose-400 rounded-full text-white text-[14px] font-bold">
                   {/* Display Term Index */}
                   {index + 1}
                 </div>
