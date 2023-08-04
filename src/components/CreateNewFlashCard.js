@@ -7,6 +7,7 @@ import { useFormik } from "formik";
 import schema from "../validation/schema";
 import AutosizeTextarea from "react-textarea-autosize";
 import { motion, AnimatePresence } from "framer-motion";
+import { FaFileUpload } from "react-icons/fa";
 
 export const CreateNewFlashCard = ({ flashcard = {} }) => {
   // Redux dispatch to add flashcards
@@ -150,7 +151,7 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
                 id="mainGroupName"
                 name="mainGroupName"
                 type="text"
-                className="px-3 py-2 border border-black h-9 w-full text-10px"
+                className="px-3 py-2 border outline-gray-200 border-gray-400 h-9 w-full text-10px"
                 onChange={(event) =>
                   handleMainChange("mainGroupName", event.target.value)
                 }
@@ -175,8 +176,8 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
                 />
               ) : (
                 // File input for uploading Main Group Image
-                <label className="flex items-center p-1 border border-blue-300 text-blue-500 text-[13px] cursor-pointer">
-                  <span>Upload Image</span>
+                <label className="flex items-center justify-between mt-2 p-1 border border-gray-400 text-blue-600 text-[9px] sm:text-[13px] cursor-pointer rounded-md w-fit">
+                  <span className="flex items-center justify-between gap-1 "> <FaFileUpload color='blue'/> <span>Upload Image</span></span>
                   <input
                     hidden
                     id="mainGroupImage"
@@ -196,7 +197,7 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
             <textarea
               id="mainGroupDescription"
               name="mainGroupDescription"
-              className="px-3 py-2 border border-black h-20 w-full text-[13px]"
+              className="px-3 py-2 border outline-gray-200 border-gray-400 h-20 w-full text-[13px]"
               onChange={(event) =>
                 handleMainChange("mainGroupDescription", event.target.value)
               }
@@ -222,14 +223,14 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
               // motion.div from Framer Motion provides animation capabilities
               <motion.div
                 key={index}
-                className="flex flex-row sm:w-full space-x-2 mb-5"
+                className="flex flex-col sm:flex-row h-auto space-y-1 sm:space-y-0 sm:w-full sm:space-x-2 mb-5"
                 // initial, animate, and exit properties define the animation behavior
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -50 }}
                 transition={{ duration: 0.5 }}
               >
-                <div className="w-16 h-8 mt-7 flex items-center justify-center bg-rose-400 rounded-full text-white text-[14px] font-bold">
+                <div className="w-8 sm:w-16 h-8 mt-7 flex items-center justify-center bg-rose-400 rounded-full text-white text-[14px] font-bold">
                   {/* Display Term Index */}
                   {index + 1}
                 </div>
@@ -238,7 +239,7 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
                   {/* Input for Term Name */}
                   <label
                     htmlFor={`termGroup[${index}].termGroupName`}
-                    className="text-[13px] font-bold"
+                    className="text-[13px] font-bold "
                   >
                     Enter Term
                   </label>
@@ -250,7 +251,7 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
                       handleTermChange(index, "termGroupName", event.target.value)
                     }
                     onBlur={formik.handleBlur}
-                    className="px-3 py-2 border border-black h-9 w-full text-[13px] mt-1"
+                    className="px-3 py-2 border h-9 w-full text-[13px] mt-1 outline-gray-200 border-gray-400"
                     value={formik.values.termGroup[index].termGroupName}
                     ref={(ref) => (termNameInputRefs.current[index] = ref)}
                   />
@@ -272,10 +273,10 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
                   </label>
                   <AutosizeTextarea
                     minRows={1}
-                    maxRows={4}
+                    maxRows={3}
                     id={`termGroup[${index}].termGroupDescription`}
                     name={`termGroup[${index}].termGroupDescription`}
-                    className="px-3 py-2 border border-black w-full text-[13px] mt-1"
+                    className="px-3 py-2 border outline-gray-200 rounded-sm border-gray-400 w-full text-[13px] mt-1 "
                     onChange={(event) =>
                       handleTermChange(index, "termGroupDescription", event.target.value)
                     }
@@ -300,7 +301,7 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
                     />
                   ) : (
                     // File input for uploading Term Image
-                    <label className="flex items-center mt-6 p-1 border border-blue-300 text-blue-500 text-[13px] cursor-pointer">
+                    <label className="flex items-center mt-5 p-2 border border-blue-400 text-blue-500 text-[10px] cursor-pointer rounded-md mb-3 sm:mb-0">
                       <span>Select Image</span>
                       <input
                         hidden
@@ -314,14 +315,14 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
                   )}
                 </div>
                 {formik.values.termGroup[index].termGroupName && (
-                  <div className="flex flex-col space-y-1">
+                  <div className="flex flex-row sm:flex-col space-x-2 sm:space-x-0 sm:mt-0 sm:space-y-2">
                     {/* Delete Term Button */}
                     <button
                       type="button"
                       onClick={() => removeTermField(index)}
-                      className="text-blue-500 text-[18px] mt-6 font-bold"
+                      className="text-gray-400 text-[18px] sm:mt-7 font-bold"
                     >
-                      <AiOutlineDelete />
+                      <AiOutlineDelete/>
                     </button>
                     {/* Edit Term Button */}
                     <button
@@ -348,7 +349,7 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
           </div>
         </div>
 
-        <div className="flex justify-center mt-10">
+        <div className="flex justify-center mt-10 mb-7">
           {/* Submit Button */}
           <button
             type="button"
