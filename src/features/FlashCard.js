@@ -6,10 +6,11 @@ import { MainGroup } from "../components/myflashcards_components/MainGroup";
 import { TermGroup } from "../components/myflashcards_components/TermGroup";
 import './flashCard.css';
 
+
 const FlashCard = () => {
   // Get the current location using useLocation hook
   const location = useLocation();
-
+console.log(location)
   return (
     <div>
       {/* Main container */}

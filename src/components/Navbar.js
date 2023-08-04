@@ -5,19 +5,19 @@ import Almabetterlogo from '../assets/AlmaBetterlogo.png';
 
 const Navbar = () => {
   return (
-    <div>
+    
       <div className="flex items-center justify-between bg-white p-2 shadow-lg">
         {/* Displaying the Almabetter logo image */}
         <img
           src={Almabetterlogo}
           alt="AlmaBetter logo"
-          className="w-22 h-9 ml-8 "
+          className="w-18 h-5 sm:w-22 sm:h-6 sm:ml-3 "
         />
         {/* Displaying the title of the Navbar */}
-        <h1 className="text-xl mr-8 font-bold">FlashCard Generator</h1>
+        <h1 className="text-sm sm:block sm:text-lg md:text-xl lg:text-xl sm:mr-5 font-bold">FlashCard Generator</h1>
       </div>
       
-    </div>
+    
   );
 };
 

@@ -222,7 +222,7 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
               // motion.div from Framer Motion provides animation capabilities
               <motion.div
                 key={index}
-                className="flex flex-row w-full space-x-2 mb-5"
+                className="flex flex-row sm:w-full space-x-2 mb-5"
                 // initial, animate, and exit properties define the animation behavior
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}

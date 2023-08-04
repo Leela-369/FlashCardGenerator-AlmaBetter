@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import {motion} from 'framer-motion'
 
 
+
 // this component contains the code for the term group section of myflashcards page. 
 export const TermGroup = () => {
     const { flashcardIndex } = useParams();
@@ -22,6 +23,7 @@ export const TermGroup = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [showShareModal, setShowShareModal] = useState(false);
     const [isCopied, setIsCopied] = useState(false);
+  
   
     const totalPictures = flashcards[flashcardId]?.termGroup.length;
   
