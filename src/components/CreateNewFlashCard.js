@@ -8,7 +8,7 @@ import schema from "../validation/schema";
 import AutosizeTextarea from "react-textarea-autosize";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaFileUpload } from "react-icons/fa";
-import { nanoid } from "@reduxjs/toolkit";
+
 
 export const CreateNewFlashCard = ({ flashcard = {} }) => {
   // Redux dispatch to add flashcards
@@ -29,7 +29,6 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
       : [
         
           {
-            termGroupId: nanoid(),
             termGroupName: "",
             termGroupDescription: "",
             termGroupImage: "",
@@ -58,7 +57,7 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
   const handleTermChange = (index, field, value) => {
     const updatedTermGroup = formik.values.termGroup.map((termGroup, i) => {
       if (i === index) {
-        return { ...termGroup,termGroupId:termGroup.termGroupId ,[field]: value };
+        return { ...termGroup, [field]: value };
       }
       return termGroup;
     });
@@ -93,7 +92,7 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
   const addTermField = () => {
     formik.setFieldValue("termGroup", [
       ...formik.values.termGroup,
-      { termGroupId: nanoid(), termGroupName: "", termGroupDescription: "", termGroupImage: "" },
+      {  termGroupName: "", termGroupDescription: "", termGroupImage: "" },
     ]);
   };
 
