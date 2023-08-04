@@ -98,33 +98,48 @@ export const TermGroup = () => {
         </div>
 
         {/* Flashcard Navigation and Details */}
-        <div className='flex flex-row space-x-3'>
+        <div className='flex flex-col sm:flex-col md:flex-col lg:flex-row lg:space-x-3'>
              {/* Flashcard Navigation Sidebar */}
-          <div className='bg-white w-40 h-60'>
-            <div className='border-b-2 flex justify-center'>
+          <div className='bg-white w-auto mb-3  h-9 sm:h-9 sm:w-full sm:h-auto md:w-full md:h-9 lg:w-40 lg:h-60'>
+            <div className='hidden sm:hidden md:hidden lg:block border-b-2 flex items-center justify-center p-2'>
               <h1 className='text-[16px] mt-3 mb-3'>Flashcards</h1>
             </div>
+            <div
+         className='space-y-1 sm:space-y-0 sm:space-x-1 
+           flex flex-row sm:flex-row md:flex-row lg:flex-col items-center justify-center'
+           >
             {/* Displaying the list of term groups as clickable links */}
             {flashcards[flashcardId]?.termGroup.map((term, index) => (
-              <div className='text-2xl flex ml-5' key={index}>
+              <div  key={index}
+              className={`flex items-center px-2 py-1 cursor-pointer ${
+                currentSlide === index ? 'text-red-500' : ''
+              }`}
+              onClick={() => handleTermClick(index)}
+              >
                 <h2
-                  className={`${currentSlide === index ? 'text-red-500' : ''}`}
-                  onClick={() => handleTermClick(index)}
-                  style={{ marginTop: '3px', marginLeft: '5px', fontSize: '13px', cursor: 'pointer' }}
+                   className={`text-sm sm:text-base ${
+            currentSlide === index ? 'font-bold' : ''
+          }`}
+          style={{
+            marginTop: '3px',
+            marginLeft: '5px',
+            fontSize: '13px',
+            cursor: 'pointer',
+          }}
                 >
                   {term.termGroupName}
                 </h2>
               </div>
             ))}
             
-
+            </div>
           </div>
 
           {/* Flashcard Image and Description */}
-          <div className='bg-white flex flex-row w-4/5 h-80 p-20px'>
+          <div className='bg-white flex flex-col sm:flex-col md:flex-row lg:flex-row sm:w-full md:w-full lg:w-4/5 h-80 p-20px items-center justify-center'>
             <motion.img
               src={flashcards[flashcardId]?.termGroup[currentSlide]?.termGroupImage?.termImageURL}
-              className='ml-4 w-1/2 h-64 mt-5'
+              className='ml-4 w-1/2 h-64 '
               alt='term img'
               initial={{ opacity: 0, x: 100  }}
               animate={{ opacity: 1 , x: 0 }}
@@ -138,7 +153,7 @@ export const TermGroup = () => {
           </div>
 
           
-          <div className='flex flex-col items-left space-y-3'>
+          <div className=' hidden sm:hidden md:hidden lg:block flex flex-row sm:flex-row md:flex-row lg:flex-col items-left space-y-3'>
              {/* Share Button */}
             <button className='w-36 p-2 text-[15px] text-black bg-white flex items-center space-x-2' onClick={handleShare} >
             <TfiShare />
@@ -158,7 +173,7 @@ export const TermGroup = () => {
         </div>
           
            {/* Previous flashcard Button */}
-        <div className='flex flex-row justify-center mt-3 space-x-3' >
+        <div className='flex flex-row justify-center mt-3 mb-3 space-x-3' >
           <button className='text-[15px]'onClick={handlePrevSlide} >
           <FaLessThan />
           </button>
@@ -215,6 +230,25 @@ export const TermGroup = () => {
         </div>
         )}
 
+<div className='block shrink sm:flex md:flex lg:hidden flex flex-row sm:flex-row md:flex-row lg:flex-col items-center justify-center space-x-1 sm:space-x-1 md:space-x-3 lg:space-x-3'>
+  {/* Share Button */}
+  <button className=' w-24 sm:w-24 md:w-36 lg:w-36 p-2 text-[10px] sm:text-[10px] md:text-[15px] lg:text-[15px] text-black bg-white flex items-center space-x-2' onClick={handleShare}>
+    <TfiShare />
+    <span >Share</span>
+  </button>
+  {/* Download Button */}
+  <button className=' w-24 sm:w-24 md:w-36 lg:w-36 p-2 text-[10px] sm:text-[10px] md:text-[15px] lg:text-[15px] text-black bg-white flex items-center space-x-2' onClick={handleDownload}>
+    <AiOutlineDownload />
+    <span >Download</span>
+  </button>
+  {/* Print Button */}
+  <button className=' w-24 sm:w-24 md:w-36 lg:w-36 p-2 text-[10px] sm:text-[10px] md:text-[15px] lg:text-[15px] text-black bg-white flex items-center space-x-2' onClick={handlePrint}>
+    <AiOutlinePrinter />
+    <span >Print</span>
+  </button>
+</div>
+
+        
     </div>
   );
 };

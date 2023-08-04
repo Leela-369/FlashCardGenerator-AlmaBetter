@@ -7,6 +7,7 @@ import { useFormik } from "formik";
 import schema from "../validation/schema";
 import AutosizeTextarea from "react-textarea-autosize";
 import { motion, AnimatePresence } from "framer-motion";
+import { nanoid } from "@reduxjs/toolkit";
 
 export const CreateNewFlashCard = ({ flashcard = {} }) => {
   // Redux dispatch to add flashcards
@@ -25,7 +26,9 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
     flashcard && flashcard.termGroup
       ? flashcard.termGroup
       : [
+        
           {
+            termGroupId: nanoid(),
             termGroupName: "",
             termGroupDescription: "",
             termGroupImage: "",
@@ -54,7 +57,7 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
   const handleTermChange = (index, field, value) => {
     const updatedTermGroup = formik.values.termGroup.map((termGroup, i) => {
       if (i === index) {
-        return { ...termGroup, [field]: value };
+        return { ...termGroup,termGroupId: termGroup.termGroupId, [field]: value };
       }
       return termGroup;
     });
@@ -89,7 +92,7 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
   const addTermField = () => {
     formik.setFieldValue("termGroup", [
       ...formik.values.termGroup,
-      { termGroupName: "", termGroupDescription: "", termGroupImage: "" },
+      { termGroupId: nanoid(), termGroupName: "", termGroupDescription: "", termGroupImage: "" },
     ]);
   };
 
@@ -222,7 +225,7 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
               // motion.div from Framer Motion provides animation capabilities
               <motion.div
                 key={index}
-                className="flex flex-row sm:w-full space-x-2 mb-5"
+                className="flex flex-row  space-x-2 mb-5"
                 // initial, animate, and exit properties define the animation behavior
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -233,7 +236,7 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
                   {/* Display Term Index */}
                   {index + 1}
                 </div>
-
+                  
                 <div className="w-5/6">
                   {/* Input for Term Name */}
                   <label
