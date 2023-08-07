@@ -31,6 +31,13 @@ const flashcardSlice = createSlice({
       //set the addFlashcard to the local storeage 
       localStorage.setItem("addFlashcard", JSON.stringify(state.flashcards));
     },
+    deleteFlashcard: (state, action) => {
+      const flashcardIndex = action.payload;
+      // Remove the flashcard at the specified index from the state
+      state.flashcards.splice(flashcardIndex, 1);
+      // Update the local storage with the modified flashcards array
+      localStorage.setItem("addFlashcard", JSON.stringify(state.flashcards));
+    },
   },
 });
 
@@ -40,7 +47,7 @@ export const selectAll = (state) => state.flashcard.flashcards;
 
 
 // This action can be dispatched to add a new flashcard to the state.
-export const { addFlashcard } = flashcardSlice.actions;
+export const { addFlashcard, deleteFlashcard } = flashcardSlice.actions;
 
 
 export default flashcardSlice.reducer;

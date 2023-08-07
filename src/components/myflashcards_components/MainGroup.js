@@ -3,12 +3,16 @@ import { selectAll } from '../../features/flashCardSlice'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { deleteFlashcard } from '../../features/flashCardSlice'
+
 
 
 
 export const MainGroup = () => {
     // Get  flashcard state from the Redux store
 const flashcards = useSelector((state) => selectAll(state));
+ const dispatch = useDispatch()
 
   // State to toggle between showing all cards and a limited number of cards
 const [showAllCards, setShowAllCards] = useState(false);
@@ -20,6 +24,10 @@ const maxVisibleCards = 6;
 const handleSeeAll = () => {
   setShowAllCards(!showAllCards);
 };
+
+const handleDelete = (flashcardIndex) => {
+  dispatch(deleteFlashcard(flashcardIndex))
+}
 
   // Determine which flashcards to display based on "showAllCards" state
 const displayedFlashcards = showAllCards ? flashcards : flashcards.slice(0, maxVisibleCards);
@@ -48,6 +56,7 @@ const displayedFlashcards = showAllCards ? flashcards : flashcards.slice(0, maxV
               <button className='w-36 h-8 text-red-500 text-[13px] p-1 border border-red-500'>View Cards</button>
               </Link>
               </nav>
+              <p className="text-red-500 text-[8px] relative bottom-1 right-0"onClick={() => handleDelete(flashcardIndex)} >Delete Card</p>
                   </div>
                 </div>
               </div>

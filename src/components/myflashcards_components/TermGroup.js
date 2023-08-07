@@ -33,17 +33,18 @@ export const TermGroup = () => {
   
     const handlePrevSlide = () => {
       setCurrentSlide((prevSlide) => (prevSlide + totalPictures - 1) % totalPictures);
-     
+
     };
   
     const handleNextSlide = () => {
       setCurrentSlide((prevSlide) => (prevSlide + 1) % totalPictures );
-      console.log(currentSlide)
-      
+      // console.log(currentSlide)
+
     };
   
     const handleTermClick = (index) => {
       setCurrentSlide(index);
+      
     };
   // Function to open the share modal when the "Share" button is clicked.
     const handleShare = () => {
@@ -73,8 +74,8 @@ export const TermGroup = () => {
     // Function to handle print of the created flashcard
     const handlePrint = () => {
       window.print();
-    };
-  
+    };    
+    
   
   return (
     <div   className='p-5'>
@@ -100,32 +101,27 @@ export const TermGroup = () => {
         {/* Flashcard Navigation and Details */}
         <div className='flex flex-col sm:flex-col md:flex-col lg:flex-row lg:space-x-3'>
              {/* Flashcard Navigation Sidebar */}
-          <div className='bg-white w-auto mb-3  h-9 sm:h-9 sm:w-full sm:h-auto md:w-full md:h-9 lg:w-40 lg:h-60'>
-            <div className='hidden sm:hidden md:hidden lg:block border-b-2 flex items-center justify-center p-2'>
-              <h1 className='text-[16px] mt-3 mb-3'>Flashcards</h1>
+          <div id='term-names-container' className='bg-white w-auto mb-3 p-2 h-auto sm:h-auto sm:w-full sm:h-auto md:w-full md:h-auto lg:w-40 lg:h-auto   '>
+            <div className='hidden sm:hidden md:hidden lg:block border-b-2 flex items-center justify-center items-center p-2'>
+              <h1 className='text-[16px]  '>Flashcards</h1>
             </div>
             <div
-         className='space-y-1 sm:space-y-0 sm:space-x-1 
+         className=' 
            flex flex-row sm:flex-row md:flex-row lg:flex-col items-center justify-center'
            >
             {/* Displaying the list of term groups as clickable links */}
             {flashcards[flashcardId]?.termGroup.map((term, index) => (
               <div  key={index}
-              className={`flex items-center px-2 py-1 cursor-pointer ${
-                currentSlide === index ? 'text-red-500' : ''
+              className={`flex items-center px-2 py-2 cursor-pointer  ${
+                currentSlide === index ? 'text-red-500 active-term' : ''
               }`}
               onClick={() => handleTermClick(index)}
               >
                 <h2
-                   className={`text-sm sm:text-base ${
+                   className={`text-sm sm:text-base  ${
             currentSlide === index ? 'font-bold' : ''
           }`}
-          style={{
-            marginTop: '3px',
-            marginLeft: '5px',
-            fontSize: '13px',
-            cursor: 'pointer',
-          }}
+          
                 >
                   {term.termGroupName}
                 </h2>
@@ -136,10 +132,10 @@ export const TermGroup = () => {
           </div>
 
           {/* Flashcard Image and Description */}
-          <div className='bg-white flex flex-col sm:flex-col md:flex-row lg:flex-row sm:w-full md:w-full lg:w-4/5 h-80 p-20px items-center justify-center'>
+          <div className='bg-white flex flex-col sm:flex-col md:flex-row lg:flex-row sm:w-full md:w-full lg:w-4/5 h-80 p-3 items-center justify-center'>
             <motion.img
               src={flashcards[flashcardId]?.termGroup[currentSlide]?.termGroupImage?.termImageURL}
-              className='ml-4 w-1/2 h-64 '
+              className='ml-0 sm:ml-0 md:ml-4 lg:ml-4 w-auto sm:w-auto md:w-1/2 lg:w-1/2 h-64 '
               alt='term img'
               initial={{ opacity: 0, x: 100  }}
               animate={{ opacity: 1 , x: 0 }}

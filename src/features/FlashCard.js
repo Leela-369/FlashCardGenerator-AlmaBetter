@@ -20,11 +20,11 @@ console.log(location)
           {/* Navigation Links */}
           <nav className="my-1">
             {/* NavLink to Create New Flashcard */}
-            <NavLink to="/" className="mr-6 text-[12px] font-semibold under-line">
+            <NavLink to="/" className="mr-6 text-sm sm:text-lg md:text-lg lg:text-lg font-semibold under-line">
               Create New
             </NavLink>
             {/* NavLink to MyFlashCards */}
-            <NavLink to="/mainGroup" className="text-[12px] font-semibold under-line">
+            <NavLink to="/mainGroup" className=" text-sm sm:text-lg md:text-lg lg:text-lg font-semibold under-line">
               My FlashCards
             </NavLink>
           </nav>
