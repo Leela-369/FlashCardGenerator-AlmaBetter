@@ -14,7 +14,7 @@ console.log(location)
   return (
     <div>
       {/* Main container */}
-      <div className="flex flex-col w-3/4 p-2 mx-auto overflow-x-hidden Container">
+      <div className="flex flex-col w-4/5 sm:4/5 md:4/5 lg:3/4 p-2 mx-auto overflow-x-hidden Container">
         <h1 className="text-[18px] font-bold mb-1">Create Flashcard</h1>
         <div className="border-b border-black">
           {/* Navigation Links */}

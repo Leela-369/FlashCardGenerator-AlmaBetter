@@ -23,7 +23,7 @@ export const TermGroup = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [showShareModal, setShowShareModal] = useState(false);
     const [isCopied, setIsCopied] = useState(false);
-  
+ 
   
     const totalPictures = flashcards[flashcardId]?.termGroup.length;
   
@@ -34,6 +34,7 @@ export const TermGroup = () => {
     const handlePrevSlide = () => {
       setCurrentSlide((prevSlide) => (prevSlide + totalPictures - 1) % totalPictures);
 
+
     };
   
     const handleNextSlide = () => {
@@ -43,9 +44,9 @@ export const TermGroup = () => {
     };
   
     const handleTermClick = (index) => {
-      setCurrentSlide(index);
-      
+      setCurrentSlide(index);     
     };
+
   // Function to open the share modal when the "Share" button is clicked.
     const handleShare = () => {
       setShowShareModal(true);
@@ -75,8 +76,8 @@ export const TermGroup = () => {
     const handlePrint = () => {
       window.print();
     };    
-    
-  
+
+     
   return (
     <div   className='p-5'>
       <div>
@@ -99,43 +100,50 @@ export const TermGroup = () => {
         </div>
 
         {/* Flashcard Navigation and Details */}
-        <div className='flex flex-col sm:flex-col md:flex-col lg:flex-row lg:space-x-3'>
+        <div className='flex flex-col lg:flex-row  space-y-3 lg:space-x-3 lg:space-y-0'>
              {/* Flashcard Navigation Sidebar */}
-          <div id='term-names-container' className='bg-white w-auto mb-3 p-2 h-auto sm:h-auto sm:w-full sm:h-auto md:w-full md:h-auto lg:w-40 lg:h-auto   '>
-            <div className='hidden sm:hidden md:hidden lg:block border-b-2 flex items-center justify-center items-center p-2'>
+          <div  className='bg-white w-full  p-2 h-auto  lg:w-40  lg:h-60 '>
+            <div className=' lg:block border-b-2 flex items-center justify-center items-center p-2'>
               <h1 className='text-[16px]  '>Flashcards</h1>
             </div>
             <div
-         className=' 
-           flex flex-row sm:flex-row md:flex-row lg:flex-col items-center justify-center'
+            id='term-names-container'
+            className=' 
+           flex flex-row  lg:flex-col  items-center justify-center'
            >
             {/* Displaying the list of term groups as clickable links */}
             {flashcards[flashcardId]?.termGroup.map((term, index) => (
-              <div  key={index}
-              className={`flex items-center px-2 py-2 cursor-pointer  ${
-                currentSlide === index ? 'text-red-500 active-term' : ''
+              <motion.div  key={index}
+              className={`flex items-center ml-2  cursor-pointer  ${
+                currentSlide === index ? 'text-red-500 ' : 'hidden sm:block'
               }`}
               onClick={() => handleTermClick(index)}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{
+                opacity: 1,
+                x: 0,
+                transition: { duration: 0.3, delay: index * 0.1 } 
+              }}
               >
                 <h2
-                   className={`text-sm sm:text-base  ${
-            currentSlide === index ? 'font-bold' : ''
+                   className={`text-sm  mt-2 ${
+            currentSlide === index ? 'font-bold active-term' : ''
           }`}
           
                 >
                   {term.termGroupName}
                 </h2>
-              </div>
+              </motion.div>
             ))}
             
             </div>
           </div>
-
+          <div className='flex flex-col items-center justify-center w-full'>
           {/* Flashcard Image and Description */}
-          <div className='bg-white flex flex-col sm:flex-col md:flex-row lg:flex-row sm:w-full md:w-full lg:w-4/5 h-80 p-3 items-center justify-center'>
+          <div className='bg-white flex flex-col  lg:flex-row w-full sm:w-full  lg:w-full h-80 p-3 items-center justify-center'>
             <motion.img
               src={flashcards[flashcardId]?.termGroup[currentSlide]?.termGroupImage?.termImageURL}
-              className='ml-0 sm:ml-0 md:ml-4 lg:ml-4 w-auto sm:w-auto md:w-1/2 lg:w-1/2 h-64 '
+              className='ml-0 sm:ml-0 md:ml-4 lg:ml-4 w-auto sm:w-auto  lg:w-1/2 h-64 '
               alt='term img'
               initial={{ opacity: 0, x: 100  }}
               animate={{ opacity: 1 , x: 0 }}
@@ -147,28 +155,7 @@ export const TermGroup = () => {
             {flashcards[flashcardId]?.termGroup[currentSlide]?.termGroupDescription}
             </p>
           </div>
-
-          
-          <div className=' hidden sm:hidden md:hidden lg:block flex flex-row sm:flex-row md:flex-row lg:flex-col items-left space-y-3'>
-             {/* Share Button */}
-            <button className='w-36 p-2 text-[15px] text-black bg-white flex items-center space-x-2' onClick={handleShare} >
-            <TfiShare />
-              <span className='ml-4'>Share</span>
-            </button>
-             {/* Download Button */}
-            <button className='w-36 p-2 text-[15px] text-black bg-white flex items-center space-x-2' onClick={handleDownload} >
-            <AiOutlineDownload />
-            <span className='ml-4'>Download</span>
-            </button>
-            {/* Print Button */}
-            <button className='w-36 p-2 text-[15px] text-black bg-white flex items-center space-x-2' onClick={handlePrint} >
-            <AiOutlinePrinter />
-            <span className='ml-4'>Print</span>
-            </button>
-          </div>
-        </div>
-          
-           {/* Previous flashcard Button */}
+             {/* Previous flashcard Button */}
         <div className='flex flex-row justify-center mt-3 mb-3 space-x-3' >
           <button className='text-[15px]'onClick={handlePrevSlide} >
           <FaLessThan />
@@ -183,6 +170,29 @@ export const TermGroup = () => {
           </button>
         </div>
       </div>
+      
+          
+          
+      <div className='flex flex-row lg:flex-col items-center justify-center lg:justify-normal sm:justify-center md:justify-center space-x-1  lg:space-y-3 lg:space-x-0'>
+             {/* Share Button */}
+            <button className='w-20 lg:w-36 p-2 text-[10px] md:text-[15px] lg:text-[15px] text-black bg-white flex items-center space-x-2' onClick={handleShare} >
+            <TfiShare />
+              <span >Share</span>
+            </button>
+             {/* Download Button */}
+            <button className='w-20 lg:w-36 p-2 text-[10px] md:text-[15px] lg:text-[15px] text-black bg-white flex items-center space-x-2' onClick={handleDownload} >
+            <AiOutlineDownload />
+            <span >Download</span>
+            </button>
+            {/* Print Button */}
+            <button className='w-20 lg:w-36 p-2 text-[10px] md:text-[15px] lg:text-[15px] text-black bg-white flex items-center space-x-2' onClick={handlePrint} >
+            <AiOutlinePrinter />
+            <span>Print</span>
+            </button>
+          </div>
+        </div>
+        </div> 
+        
 
       {showShareModal && (
         <div className='fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50 flex items-center justify-center'>
@@ -225,24 +235,6 @@ export const TermGroup = () => {
           </div>
         </div>
         )}
-
-<div className='block shrink sm:flex md:flex lg:hidden flex flex-row sm:flex-row md:flex-row lg:flex-col items-center justify-center space-x-1 sm:space-x-1 md:space-x-3 lg:space-x-3'>
-  {/* Share Button */}
-  <button className=' w-24 sm:w-24 md:w-36 lg:w-36 p-2 text-[10px] sm:text-[10px] md:text-[15px] lg:text-[15px] text-black bg-white flex items-center space-x-2' onClick={handleShare}>
-    <TfiShare />
-    <span >Share</span>
-  </button>
-  {/* Download Button */}
-  <button className=' w-24 sm:w-24 md:w-36 lg:w-36 p-2 text-[10px] sm:text-[10px] md:text-[15px] lg:text-[15px] text-black bg-white flex items-center space-x-2' onClick={handleDownload}>
-    <AiOutlineDownload />
-    <span >Download</span>
-  </button>
-  {/* Print Button */}
-  <button className=' w-24 sm:w-24 md:w-36 lg:w-36 p-2 text-[10px] sm:text-[10px] md:text-[15px] lg:text-[15px] text-black bg-white flex items-center space-x-2' onClick={handlePrint}>
-    <AiOutlinePrinter />
-    <span >Print</span>
-  </button>
-</div>
 
         
     </div>

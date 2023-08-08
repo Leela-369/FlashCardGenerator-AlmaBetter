@@ -14,6 +14,8 @@ export const MainGroup = () => {
 const flashcards = useSelector((state) => selectAll(state));
  const dispatch = useDispatch()
 
+const sortCards = flashcards.slice().sort((a, b) => b.date.localeCompare(a.date))
+
   // State to toggle between showing all cards and a limited number of cards
 const [showAllCards, setShowAllCards] = useState(false);
  
@@ -30,12 +32,12 @@ const handleDelete = (flashcardIndex) => {
 }
 
   // Determine which flashcards to display based on "showAllCards" state
-const displayedFlashcards = showAllCards ? flashcards : flashcards.slice(0, maxVisibleCards);
+const displayedFlashcards = showAllCards ? sortCards : sortCards.slice(0, maxVisibleCards);
     
   return (
     <div>
       <div
-       className='flex flex-wrap gap-3 ml-2'
+       className='flex flex-wrap gap-3 ml-2 items-center justify-center'
        >
           {/* Display each flashcard */}
         {displayedFlashcards.map((flashcard, flashcardIndex) => (
@@ -56,7 +58,7 @@ const displayedFlashcards = showAllCards ? flashcards : flashcards.slice(0, maxV
               <button className='w-36 h-8 text-red-500 text-[13px] p-1 border border-red-500'>View Cards</button>
               </Link>
               </nav>
-              <p className="text-red-500 text-[8px] relative bottom-1 right-0"onClick={() => handleDelete(flashcardIndex)} >Delete Card</p>
+              <button className="text-gray-700 text-[13px] relative  bottom-1 cursor-pointer right-0"onClick={() => handleDelete(flashcardIndex)} >remove</button>
                   </div>
                 </div>
               </div>
