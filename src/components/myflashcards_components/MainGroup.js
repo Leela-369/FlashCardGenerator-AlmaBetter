@@ -14,9 +14,7 @@ export const MainGroup = () => {
 const flashcards = useSelector((state) => selectAll(state));
  const dispatch = useDispatch()
 
-const sortCards = flashcards.slice().sort((a, b) => b.date.localeCompare(a.date))
-
-  // State to toggle between showing all cards and a limited number of cards
+ // State to toggle between showing all cards and a limited number of cards
 const [showAllCards, setShowAllCards] = useState(false);
  
 // Maximum number of cards to show when not in "Show All" mode
@@ -32,7 +30,7 @@ const handleDelete = (flashcardIndex) => {
 }
 
   // Determine which flashcards to display based on "showAllCards" state
-const displayedFlashcards = showAllCards ? sortCards : sortCards.slice(0, maxVisibleCards);
+const displayedFlashcards = showAllCards ? flashcards : flashcards.slice(0, maxVisibleCards);
     
   return (
     <div>
@@ -45,7 +43,7 @@ const displayedFlashcards = showAllCards ? sortCards : sortCards.slice(0, maxVis
               <div className='flex flex-col items-center'>
                 {/* Display the MainGroup Image */}
               <img src={flashcard?.mainGroup?.mainGroupImage?.mainImageURL} alt='' className=' w-12 h-12 rounded-full z-10 position relative top-3 shadow-md'/>
-              <div className='bg-white w-72 h-48 flex flex-col space-y-3 items-center z-0'>
+              <div className='bg-white w-72 h-48 flex flex-col space-y-2 items-center z-0'>
                 {/* Display the mainGroup Name */}
                 <h1 className='text-[15px] font-bold mt-8'>{flashcard?.mainGroup?.mainGroupName}</h1>
                 {/* Display the mainGroup Description */}

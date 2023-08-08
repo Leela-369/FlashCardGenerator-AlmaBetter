@@ -32,7 +32,7 @@ const flashcardSlice = createSlice({
       // When the 'addFlashcard' action is dispatched, this reducer is called.
       // It receives the 'state' and the 'action' payload as arguments.
       // The newflashcard object is pushed to the 'flashcards' array in the state.
-      state.flashcards.push(newFlashcard);
+      state.flashcards.unshift(newFlashcard);
       //set the addFlashcard to the local storeage 
       localStorage.setItem("addFlashcard", JSON.stringify(state.flashcards));
     },
