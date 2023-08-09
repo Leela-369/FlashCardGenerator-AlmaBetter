@@ -10,7 +10,8 @@ import { CgMail } from 'react-icons/cg';
 import { TfiShare } from 'react-icons/tfi';
 import { IoMdClose } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
-import {motion} from 'framer-motion'
+import {motion} from 'framer-motion';
+import { Document, Page, Text, View, pdf } from "@react-pdf/renderer";
 
 
 
@@ -65,12 +66,28 @@ export const TermGroup = () => {
     };
 
   // Function to handle download of the created flashcard
-    const handleDownload = () => {
-      const link = document.createElement('a');
-      link.href = flashcards[flashcardId]?.termGroup[currentSlide]?.termImage?.termImageURL;
-      link.download = 'flashcard.pdf';
-      link.click();
-    };
+  const handleDownload = async () => {
+    const pdfContent = (
+      <Document>
+        <Page size="A4">
+          <View>
+            <Text>{flashcards[flashcardId]?.mainGroup?.mainGroupName}</Text>
+            <Text>{flashcards[flashcardId]?.mainGroup?.mainGroupDescription}</Text>
+          </View>
+        </Page>
+      </Document>
+    );
+    const blob = await pdf(pdfContent).toBlob();
+    const blobUrl = URL.createObjectURL(blob);
+  
+    const link = document.createElement("a");
+    link.href = blobUrl;
+    link.download = "flashcard.pdf";
+    link.click();
+  
+    // Clean up the blob URL after download
+    URL.revokeObjectURL(blobUrl);
+  }
   
     // Function to handle print of the created flashcard
     const handlePrint = () => {
@@ -103,7 +120,7 @@ export const TermGroup = () => {
         <div className='flex flex-col lg:flex-row  space-y-3 lg:space-x-3 lg:space-y-0'>
              {/* Flashcard Navigation Sidebar */}
           <div  className='bg-white w-full  p-2 h-auto  lg:w-40  lg:h-60 '>
-            <div className=' lg:block border-b-2 flex items-center justify-center items-center p-2'>
+            <div className=' lg:block border-b-2 flex items-center justify-center p-2'>
               <h1 className='text-[16px]  '>Flashcards</h1>
             </div>
             <div
