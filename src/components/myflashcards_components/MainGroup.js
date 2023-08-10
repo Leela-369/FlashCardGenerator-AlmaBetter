@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { deleteFlashcard } from '../../features/flashCardSlice'
-import { AiOutlineDelete } from 'react-icons/ai'
+import { AiFillDelete } from 'react-icons/ai'
 
 
 
@@ -80,8 +80,8 @@ const displayedFlashcards = showAllCards ? flashcards : flashcards.slice(0, maxV
         </button>
       )}
       {showDeleteMessage && (
-        <div className='fixed  inset-0 left-6 bottom-8 z-50 p-4 bg-red-600 text-white shadow-md  '>
-        <p className=' flex items-center justify-center text-xl font-bold'> <AiOutlineDelete className='mr-6 font-bold'/> Your Card is Deleted </p>
+        <div className='fixed  left-6 bottom-8 z-50 p-4 bg-red-600 text-white shadow-md  '>
+        <p className=' flex items-center justify-center text-xl font-bold'> <AiFillDelete className='mr-6 text-xl font-bold'/> Your Card is Deleted </p>
         </div>
       )}
     </div>
