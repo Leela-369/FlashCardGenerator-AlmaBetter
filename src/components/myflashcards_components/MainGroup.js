@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { deleteFlashcard } from '../../features/flashCardSlice'
+import { AiOutlineDelete } from 'react-icons/ai'
 
 
 
@@ -16,6 +17,9 @@ const flashcards = useSelector((state) => selectAll(state));
 
  // State to toggle between showing all cards and a limited number of cards
 const [showAllCards, setShowAllCards] = useState(false);
+
+// State to show the delete message
+const [showDeleteMessage, setshowDeleteMessage] = useState(false)
  
 // Maximum number of cards to show when not in "Show All" mode
 const maxVisibleCards = 6;
@@ -27,6 +31,11 @@ const handleSeeAll = () => {
 
 const handleDelete = (flashcardIndex) => {
   dispatch(deleteFlashcard(flashcardIndex))
+  setshowDeleteMessage(true)
+
+  setTimeout(() => {
+    setshowDeleteMessage(false)
+  },2000)
 }
 
   // Determine which flashcards to display based on "showAllCards" state
@@ -69,6 +78,11 @@ const displayedFlashcards = showAllCards ? flashcards : flashcards.slice(0, maxV
         onClick={handleSeeAll}>
           See All
         </button>
+      )}
+      {showDeleteMessage && (
+        <div className='fixed  inset-0 left-6 bottom-8 z-50 p-4 bg-red-600 text-white shadow-md  '>
+        <p className=' flex items-center justify-center text-xl font-bold'> <AiOutlineDelete className='mr-6 font-bold'/> Your Card is Deleted </p>
+        </div>
       )}
     </div>
   )

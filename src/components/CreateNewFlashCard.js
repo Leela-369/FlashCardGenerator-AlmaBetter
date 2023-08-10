@@ -8,6 +8,7 @@ import schema from "../validation/schema";
 import AutosizeTextarea from "react-textarea-autosize";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaFileUpload } from "react-icons/fa";
+import { GiPartyPopper } from 'react-icons/gi'
 
 
 export const CreateNewFlashCard = ({ flashcard = {} }) => {
@@ -37,6 +38,9 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
 
   // Ref used to focus the cursor to inputs for term name
   const termNameInputRefs = useRef([]);
+  
+  //State  show's the message when the flash card is created
+   const [showMessage, setShowMessage] = useState(false)
 
   // State to track whether main group image is uploaded
   const [isMainGroupImageUploaded, setIsMainGroupImageUploaded] = useState(
@@ -121,6 +125,13 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
     resetForm();
     setIsMainGroupImageUploaded(false);
     setIsTermImageUploaded(Array(initialTermGroup.length).fill(false));
+
+     setShowMessage(true)
+
+     setTimeout(() => {
+       setShowMessage(false);
+     }, 1000);
+
   };
 
   // Function to set focus to the term name input field of a specific index
@@ -361,8 +372,15 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
             Create Card
           </button>
         </div>
-
-      </div>
+        {showMessage && (
+        <div className=" fixed  inset-0 flex items-center justify-center  z-50">
+          <div className="bg-gradient-to-r from-green-400 to-blue-500 opacity-80  w-1/2 h-1/2 rounded drop-shadow-2xl">
+            <p className=" relative top-24 flex items-center justify-center text-white text-3xl  font-bold" > Hurray!!!</p>
+            <p className=" fixed  inset-0 flex items-center justify-center  text-white  text-2xl  font-bold gap-3  ">  Your flashcard has been created <GiPartyPopper/> <GiPartyPopper/>  </p>
+          </div>
+        </div>
+        )}
+          </div>
     </form>
   );
 };
