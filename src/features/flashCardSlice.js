@@ -1,7 +1,6 @@
 // Import the 'createSlice' function from the '@reduxjs/toolkit' package.
 import { createSlice } from "@reduxjs/toolkit";
-// Import the 'format' from the date-fns
-import { format } from "date-fns"
+
 
 // Retrieve data from local storage and parse it as JSON.
 const localStoreData = localStorage.getItem("addFlashcard");
@@ -26,13 +25,10 @@ const flashcardSlice = createSlice({
   reducers: {
     // Reducer function to add a new flashcard to the state.
     addFlashcard: (state, action) => {
-      const newFlashcard = action.payload
-      //Added data to the flashcard 
-      newFlashcard.date = format(new Date(), 'yyyy-MM-dd HH:mm:ss');
       // When the 'addFlashcard' action is dispatched, this reducer is called.
       // It receives the 'state' and the 'action' payload as arguments.
       // The newflashcard object is pushed to the 'flashcards' array in the state.
-      state.flashcards.unshift(newFlashcard);
+      state.flashcards.unshift(action.payload);
       //set the addFlashcard to the local storeage 
       localStorage.setItem("addFlashcard", JSON.stringify(state.flashcards));
     },
