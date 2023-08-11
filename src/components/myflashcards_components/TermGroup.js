@@ -11,7 +11,7 @@ import { TfiShare } from 'react-icons/tfi';
 import { IoMdClose } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 import {motion} from 'framer-motion';
-import { Document, Page, Text, View, pdf } from "@react-pdf/renderer";
+import { Document, Page,Image, StyleSheet , Text, View, pdf } from "@react-pdf/renderer";
 
 
 
@@ -25,6 +25,65 @@ export const TermGroup = () => {
     const [showShareModal, setShowShareModal] = useState(false);
     const [isCopied, setIsCopied] = useState(false);
  
+    const styles = StyleSheet.create({
+
+      body:{
+        display:'flex',
+        flexDirection:'column',
+        alignItems:'center',
+        justifyContent:'space-between',
+
+
+      },
+      mainGroup:{
+        display:'flex',
+        flexDirection:'column',
+        alignItems:'center',
+        justifyContent:'space-between',
+
+
+      },
+      termGroup:{
+        display:'flex',
+        flexDirection:'column',
+        alignItems:'center',
+        justifyContent:'space-between',
+
+      },
+      term:{
+        display:'flex',
+        flexDirection:'column',
+        alignItems:'center',
+        justifyContent:'space-between',
+
+      },
+      mainGroupName:{
+        color:'black',
+
+      },
+      mainGroupDescription:{
+        color:'black',
+
+      },
+      mainGroupImage:{
+        width:'300px',
+        height:'300px',
+
+      },
+      termGroupName:{
+        color:'black',
+
+      },
+      termGroupDescription:{
+        color:'black',
+
+      },
+      termGroupImage:{
+        width:'300px',
+        height:'300px',
+
+      },
+    })
   
     const totalPictures = flashcards[flashcardId]?.termGroup.length;
   
@@ -69,10 +128,26 @@ export const TermGroup = () => {
   const handleDownload = async () => {
     const pdfContent = (
       <Document>
-        <Page size="A4">
-          <View>
+        <Page style={styles.body} wrap={true} size="A4">
+          <View style={styles.mainGroup}>
             <Text>{flashcards[flashcardId]?.mainGroup?.mainGroupName}</Text>
+            <Image src={flashcards[flashcardId]?.mainGroup?.mainGroupImage?.mainGroupImageURL}/>           
             <Text>{flashcards[flashcardId]?.mainGroup?.mainGroupDescription}</Text>
+          </View>
+          <View style={styles.termGroup} >
+            {flashcards[flashcardId]?.termGroup.map((term,index)=>(
+              <View key={index} style={styles.term} >
+                <Image src={term?.termGroupImage?.termImageURL} style={styles.termGroupImage} />
+                <Text style={styles.termGroupName} >{term?.termGroupName}</Text>
+                <Text style={styles.termGroupDescription}>{term?.termGroupDescription}</Text>
+              </View> 
+
+
+
+
+            ))}
+           
+
           </View>
         </Page>
       </Document>

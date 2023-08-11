@@ -56,9 +56,7 @@ const displayedFlashcards = showAllCards ? flashcards : flashcards.slice(0, maxV
                 {/* Display the mainGroup Name */}
                 <h1 className='text-[15px] font-bold mt-8'>{flashcard?.mainGroup?.mainGroupName}</h1>
                 {/* Display the mainGroup Description */}
-                <div className='w-full h-4 overflow-hidden '>
-                <p className='text-[10px] text-center'>{flashcard?.mainGroup?.mainGroupDescription} </p>
-                </div>
+                <p className='text-[10px] text-center max-w-[70%] max-h-4 overflow-hidden'>{flashcard?.mainGroup?.mainGroupDescription} </p>
                 {/* Display the lenth of the terms the user made in the current flashcard */}
                 <p className='text-[13px]'>{flashcard.termGroup.length} cards</p>
                 {/* This the Link button to the TermGroup */}
@@ -67,7 +65,7 @@ const displayedFlashcards = showAllCards ? flashcards : flashcards.slice(0, maxV
               <button className='w-36 h-8 text-red-500 text-[13px] p-1 border border-red-500'>View Cards</button>
               </Link>
               </nav>
-              <button className="text-gray-700 text-[13px] relative  bottom-1 cursor-pointer right-0"onClick={() => handleDelete(flashcardIndex)} >remove</button>
+              <button className="text-gray-700 text-[13px] relative  bottom-1 cursor-pointer right-0"onClick={() => handleDelete(flashcardIndex)} > remove </button>
                   </div>
                 </div>
               </div>
