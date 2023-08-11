@@ -56,7 +56,9 @@ const displayedFlashcards = showAllCards ? flashcards : flashcards.slice(0, maxV
                 {/* Display the mainGroup Name */}
                 <h1 className='text-[15px] font-bold mt-8'>{flashcard?.mainGroup?.mainGroupName}</h1>
                 {/* Display the mainGroup Description */}
+                <div className='w-full h-4 overflow-hidden '>
                 <p className='text-[10px] text-center'>{flashcard?.mainGroup?.mainGroupDescription} </p>
+                </div>
                 {/* Display the lenth of the terms the user made in the current flashcard */}
                 <p className='text-[13px]'>{flashcard.termGroup.length} cards</p>
                 {/* This the Link button to the TermGroup */}

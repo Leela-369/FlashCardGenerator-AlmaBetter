@@ -10,7 +10,7 @@ import './flashCard.css';
 const FlashCard = () => {
   // Get the current location using useLocation hook
   const location = useLocation();
-console.log(location)
+
   return (
     <div>
       {/* Main container */}
