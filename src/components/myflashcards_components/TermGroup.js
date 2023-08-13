@@ -11,7 +11,7 @@ import { TfiShare } from 'react-icons/tfi';
 import { IoMdClose } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 import {motion} from 'framer-motion';
-import { Document, Page,Image, StyleSheet , Text, View, pdf } from "@react-pdf/renderer";
+import { Document, Page,Image, Text, View, pdf } from "@react-pdf/renderer";
 
 
 
@@ -24,66 +24,6 @@ export const TermGroup = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [showShareModal, setShowShareModal] = useState(false);
     const [isCopied, setIsCopied] = useState(false);
- 
-    const styles = StyleSheet.create({
-
-      body:{
-        display:'flex',
-        flexDirection:'column',
-        alignItems:'center',
-        justifyContent:'space-between',
-
-
-      },
-      mainGroup:{
-        display:'flex',
-        flexDirection:'column',
-        alignItems:'center',
-        justifyContent:'space-between',
-
-
-      },
-      termGroup:{
-        display:'flex',
-        flexDirection:'column',
-        alignItems:'center',
-        justifyContent:'space-between',
-
-      },
-      term:{
-        display:'flex',
-        flexDirection:'column',
-        alignItems:'center',
-        justifyContent:'space-between',
-
-      },
-      mainGroupName:{
-        color:'black',
-
-      },
-      mainGroupDescription:{
-        color:'black',
-
-      },
-      mainGroupImage:{
-        width:'300px',
-        height:'300px',
-
-      },
-      termGroupName:{
-        color:'black',
-
-      },
-      termGroupDescription:{
-        color:'black',
-
-      },
-      termGroupImage:{
-        width:'300px',
-        height:'300px',
-
-      },
-    })
   
     const totalPictures = flashcards[flashcardId]?.termGroup.length;
   
@@ -124,30 +64,72 @@ export const TermGroup = () => {
       }, 2000);
     };
 
+  
   // Function to handle download of the created flashcard
   const handleDownload = async () => {
     const pdfContent = (
-      <Document>
-        <Page style={styles.body} wrap={true} size="A4">
-          <View style={styles.mainGroup}>
-            <Text>{flashcards[flashcardId]?.mainGroup?.mainGroupName}</Text>
-            <Image src={flashcards[flashcardId]?.mainGroup?.mainGroupImage?.mainGroupImageURL}/>           
-            <Text>{flashcards[flashcardId]?.mainGroup?.mainGroupDescription}</Text>
+      <Document >
+        <Page size="A4" style={{
+          padding: 30
+        }}>
+          <View style={{
+            flexDirection:'column',
+            marginBottom: 20,
+          }}>
+          <View style={{
+              flexDirection:'column',
+              alignItems:'center'
+             }}>
+             <Text style={{
+                 fontSize: 24, // Main Group Name in big size
+                 fontWeight: 'bold', // Bold
+                 marginBottom: 10, // Add spacing below
+              }}>
+              {flashcards[flashcardId]?.mainGroup?.mainGroupName}
+              </Text>
+              <Text style={{
+                  fontSize: 18, 
+                  marginBottom: 20
+             }}>
+              {flashcards[flashcardId]?.mainGroup?.mainGroupDescription}
+              </Text>
           </View>
-          <View style={styles.termGroup} >
-            {flashcards[flashcardId]?.termGroup.map((term,index)=>(
-              <View key={index} style={styles.term} >
-                <Image src={term?.termGroupImage?.termImageURL} style={styles.termGroupImage} />
-                <Text style={styles.termGroupName} >{term?.termGroupName}</Text>
-                <Text style={styles.termGroupDescription}>{term?.termGroupDescription}</Text>
-              </View> 
+          <View style={{
+              flexDirection: 'column', 
+              alignItems: 'left', 
+          }}>
+          {flashcards[flashcardId]?.termGroup.map((term, index) => (
+            <View key={index} style={{
+              marginBottom: 20,
+            }}>
+              <Text style={{
+                  fontSize: 18,
+                  fontWeight: 'bold', 
+                  marginBottom: 10,
+              }}>{term?.termGroupName}</Text>
+              <View style={{
+                  flexDirection: 'row', 
+                  }}>
+              <Image 
+              src={term?.termGroupImage?.termImageURL}
 
+              style={{
+                width: '180px',
+                height: 'auto',
+                marginRight: 10
+              }}
+              />
+              <Text style={{
+                   flex: 1, 
+                   fontSize: 14,
+              }}>
+                {term?.termGroupDescription}</Text>
+                </View>
 
+            </View>
 
-
-            ))}
-           
-
+          ))}
+          </View>
           </View>
         </Page>
       </Document>

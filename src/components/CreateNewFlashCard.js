@@ -153,7 +153,7 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
   return (
     // Form containing inputs for mainGroup, termGroup, and other features, and a submit button
     <form onSubmit={formik.handleSubmit}>
-      <div className="mt-3 h-auto w-full">
+      <div className="mt-3 h-auto w-full z-0">
         {/* Main Group Section */}
         <div className="bg-white p-4">
           <div className="flex">
@@ -192,6 +192,7 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
                 <label className="flex items-center justify-between mt-2 p-1 border border-gray-400 text-blue-600 text-[9px] sm:text-[13px] cursor-pointer rounded-md w-fit">
                   <span className="flex items-center justify-between gap-1 "> <FaFileUpload className="text-blue-600"/> <span>Upload Image</span></span>
                   <input
+                  required
                     hidden
                     id="mainGroupImage"
                     name="mainGroupImage"
@@ -316,7 +317,7 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
                     // File input for uploading Term Image
                     <label className="flex items-center mt-5 p-2 border border-blue-400 text-blue-500 text-[10px] cursor-pointer rounded-md mb-3 sm:mb-0">
                       <span>Select Image</span>
-                      <input
+                      <input required
                         hidden
                         id={`termGroup[${index}].termGroupImage`}
                         name={`termGroup[${index}].termGroupImage`}
@@ -372,15 +373,16 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
             Create Card
           </button>
         </div>
-        {showMessage && (
-        <div className=" fixed  inset-0 flex items-center justify-center  z-50">
-          <div className="bg-gradient-to-r from-green-400 to-blue-500 opacity-80  w-1/2 h-1/2 rounded drop-shadow-2xl">
-            <p className=" relative top-24 flex items-center justify-center text-white text-3xl  font-bold" > Hurray!!!</p>
-            <p className=" fixed  inset-0 flex items-center justify-center  text-white  text-2xl  font-bold gap-3  ">  Your flashcard has been created <GiPartyPopper/> <GiPartyPopper/>  </p>
+       
           </div>
+          {showMessage && (
+        
+        <div className="fixed flex items-center justify-center z-10 inset-0 top-[80%] mr-auto ml-auto p-3 bg-[#22ee5b] rounded drop-shadow-lg max-w-fit max-h-5">
+          
+          <p className="flex items-center justify-center text-white text-sm font-bold gap-1"> <span>  Your flashcard has been created </span> <GiPartyPopper/> <GiPartyPopper/>  </p>
         </div>
-        )}
-          </div>
+     
+      )}
     </form>
   );
 };

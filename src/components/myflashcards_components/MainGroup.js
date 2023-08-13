@@ -80,7 +80,7 @@ const displayedFlashcards = showAllCards ? flashcards : flashcards.slice(0, maxV
         </button>
       )}
       {showDeleteMessage && (
-        <div className='fixed  left-6 bottom-8 z-50 p-4 bg-red-600 text-white shadow-md  '>
+        <div className='fixed ml-auto mr-auto max-h-fit max-w-fit bottom-8 z-50 p-2 bg-[#B33A3A] text-white rounded-md drop-shadow-md'>
         <p className=' flex items-center justify-center text-xl font-bold'> <AiFillDelete className='mr-6 text-xl font-bold'/> Your Card is Deleted </p>
         </div>
       )}
