@@ -179,7 +179,8 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
                   </div>
                 )}
             </div>
-            <div className="flex w-1/3 mt-4 items-center">
+            <div>
+            <div className="flex w-36 mt-4 items-center">
               {/* Conditional Rendering for Main Group Image */}
               {isMainGroupImageUploaded ? (
                 <img
@@ -189,8 +190,8 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
                 />
               ) : (
                 // File input for uploading Main Group Image
-                <label className="flex items-center justify-between mt-2 p-1 border border-gray-400 text-blue-600 text-[9px] sm:text-[13px] cursor-pointer rounded-md w-fit">
-                  <span className="flex items-center justify-between gap-1 "> <FaFileUpload className="text-blue-600"/> <span>Upload Image</span></span>
+                <label className="flex items-center justify-between mt-2 p-1 border border-gray-400 text-blue-600 text-[9px] sm:text-[13px] cursor-pointer rounded-md w-auto">
+                  <span className="flex items-center justify-between gap-2 "> <FaFileUpload className="ml-2 text-[15px] text-blue-600"/> <span>Upload Image</span></span>
                   <input
                     hidden
                     id="mainGroupImage"
@@ -202,6 +203,14 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
                   />
                 </label>
               )}
+            </div>
+            {formik.touched.mainGroup?.mainGroupImage &&
+                formik.errors.mainGroup?.mainGroupImage && (
+                  // Formik Error Message for Main Group Image
+                  <div className="text-red-600 text-[10px]">
+                    {formik.errors.mainGroup.mainGroupImage}
+                  </div>
+                )}
             </div>
           </div>
           <div className="mt-2 w-3/4">
@@ -304,6 +313,7 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
                       </div>
                     )}
                 </div>
+                <div>
                 <div className="w-44 flex items-center">
                   {/* Conditional Rendering for Term Image */}
                   {isTermImageUploaded[index] ? (
@@ -314,7 +324,7 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
                     />
                   ) : (
                     // File input for uploading Term Image
-                    <label className="flex items-center mt-5 p-2 border border-blue-400 text-blue-500 text-[10px] cursor-pointer rounded-md mb-3 sm:mb-0">
+                    <label className="flex items-center mt-7 p-2 border border-blue-400 text-blue-500 text-[10px] cursor-pointer rounded-md mb-3 sm:mb-0">
                       <span>Select Image</span>
                       <input
                         hidden
@@ -327,6 +337,14 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
                     </label>
                   )}
                 </div>
+                {formik.touched.termGroup?.[index]?.termGroupImage &&
+                    formik.errors.termGroup?.[index]?.termGroupImage && (
+                      // Formik Error Message for Term Image
+                      <div className="text-red-600 text-[10px] mt-1">
+                        {formik.errors.termGroup[index].termGroupImage}
+                      </div>
+                    )}
+                    </div>
                 {formik.values.termGroup[index].termGroupName && (
                   <div className="flex flex-row sm:flex-col space-x-2 sm:space-x-0 sm:mt-0 sm:space-y-2">
                     {/* Delete Term Button */}
