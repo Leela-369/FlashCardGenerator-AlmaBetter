@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { deleteFlashcard } from '../../features/flashCardSlice'
 import { AiFillDelete } from 'react-icons/ai'
+import { motion } from 'framer-motion'
 
 
 
@@ -80,9 +81,14 @@ const displayedFlashcards = showAllCards ? flashcards : flashcards.slice(0, maxV
         </button>
       )}
       {showDeleteMessage && (
-        <div className='fixed ml-auto mr-auto max-h-fit max-w-fit bottom-8 z-50 p-2 bg-[#B33A3A] text-white rounded-md drop-shadow-md'>
-        <p className=' flex items-center justify-center text-xl font-bold'> <AiFillDelete className='mr-6 text-xl font-bold'/> Your Card is Deleted </p>
-        </div>
+        <motion.div 
+        initial={{ x: -1000 }}
+        animate={{ x: 0 }}
+        exit={{ x: -1000 }}
+        transition={{ duration: 1 }}
+        className='fixed left-18 sm:left-10 max-h-fit max-w-fit bottom-8 z-50 p-1 bg-red-600 text-white rounded-md drop-shadow-md'>
+        <p className=' flex items-center justify-center mr-2 text-sm lg:text-lg font-bold'> <AiFillDelete className='mr-4 text-sm lg:text-lg font-bold'/> Your Card is Deleted </p>
+        </motion.div>
       )}
     </div>
   )

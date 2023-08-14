@@ -11,6 +11,7 @@ import { FaFileUpload } from "react-icons/fa";
 import { GiPartyPopper } from 'react-icons/gi'
 
 
+
 export const CreateNewFlashCard = ({ flashcard = {} }) => {
   // Redux dispatch to add flashcards
   const dispatch = useDispatch();
@@ -130,7 +131,7 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
 
      setTimeout(() => {
        setShowMessage(false);
-     }, 1000);
+     }, 2000);
 
   };
 
@@ -157,7 +158,7 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
         {/* Main Group Section */}
         <div className="bg-white p-4">
           <div className="flex">
-            <div className="w-1/2 mr-4">
+            <div className="w-2/3 sm:w-1/2  mr-4">
               {/* Input for Main Group Name */}
               <p className="text-[13px] font-bold mb-2">Group Name</p>
               <input
@@ -180,18 +181,18 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
                 )}
             </div>
             <div>
-            <div className="flex w-36 mt-4 items-center">
+            <div className="flex w-2/3 sm:w-28 mt-4 items-center">
               {/* Conditional Rendering for Main Group Image */}
               {isMainGroupImageUploaded ? (
                 <img
                   src={formik.values.mainGroup.mainGroupImage.mainImageURL}
                   alt="Main Group"
-                  className="w-28 h-14"
+                  className="w-44 h-14"
                 />
               ) : (
                 // File input for uploading Main Group Image
-                <label className="flex items-center justify-between mt-2 p-1 border border-gray-400 text-blue-600 text-[9px] sm:text-[13px] cursor-pointer rounded-md w-auto">
-                  <span className="flex items-center justify-between gap-2 "> <FaFileUpload className="ml-2 text-[15px] text-blue-600"/> <span>Upload Image</span></span>
+                <label className="flex items-center justify-between mt-2 p-1 border border-gray-400 text-blue-600 text-[10px] sm:text-[13px] cursor-pointer rounded-md w-auto">
+                  <span className="flex items-center justify-between gap-1 "> <FaFileUpload className="text-blue-600"/> <span>UploadImage</span></span>
                   <input
                   required
                     hidden
@@ -315,17 +316,17 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
                     )}
                 </div>
                 <div>
-                <div className="w-44 flex items-center">
+                <div className=" w-28 flex items-center">
                   {/* Conditional Rendering for Term Image */}
                   {isTermImageUploaded[index] ? (
                     <img
                       src={formik.values.termGroup[index].termGroupImage.termImageURL}
                       alt={`Term ${index + 1}`}
-                      className="w-28 h-14"
+                      className=" mt-1 sm:mt-4 w-26 h-14"
                     />
                   ) : (
                     // File input for uploading Term Image
-                    <label className="flex items-center mt-7 p-2 border border-blue-400 text-blue-500 text-[10px] cursor-pointer rounded-md mb-3 sm:mb-0">
+                    <label className="flex items-center mt-2 sm:mt-7 p-2 border border-blue-400 text-blue-500 text-[10px] cursor-pointer rounded-md mb-2 sm:mb-0">
                       <span>Select Image</span>
                       <input required
                         hidden
@@ -395,10 +396,15 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
           </div>
           {showMessage && (
         
-        <div className="fixed flex items-center justify-center z-10 inset-0 top-[80%] mr-auto ml-auto p-3 bg-[#22ee5b] rounded drop-shadow-lg max-w-fit max-h-5">
+        <motion.div 
+        initial={{ x: -1000 }}
+        animate={{ x: 0 }}
+        exit={{ x: -1000 }}
+        transition={{ duration: 1 }}
+        className="fixed flex left-8  sm:z-10 inset-0 top-[90%] p-6 bg-green-600 rounded drop-shadow-lg max-w-fit max-h-5">
           
           <p className="flex items-center justify-center text-white text-sm font-bold gap-1"> <span>  Your flashcard has been created </span> <GiPartyPopper/> <GiPartyPopper/>  </p>
-        </div>
+        </motion.div>
      
       )}
     </form>
