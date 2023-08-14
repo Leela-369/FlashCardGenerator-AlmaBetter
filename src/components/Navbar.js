@@ -1,5 +1,5 @@
 import React from "react";
-import Almabetterlogo from '../assets/AlmaBetterlogo.png';
+import AlmaBetterLogo from '../assets/logo.png'
 // Importing the image file 'Almabetterlogo.png' from the '../assets' directory
 
 
@@ -9,7 +9,7 @@ const Navbar = () => {
       <div className="flex items-center justify-between bg-white p-2 shadow-lg">
         {/* Displaying the Almabetter logo image */}
         <img
-          src={Almabetterlogo}
+          src={AlmaBetterLogo}
           alt="AlmaBetter logo"
           className="w-18 h-5 sm:w-22 sm:h-6 sm:ml-3 "
         />
