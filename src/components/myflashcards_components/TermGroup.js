@@ -80,16 +80,28 @@ export const TermGroup = () => {
               flexDirection:'column',
               alignItems:'center'
              }}>
+              <Text style={{
+                 fontSize: 24,
+                 fontWeight: 'bold',
+                 marginBottom: 10,
+                 color:'indianred'
+              }}>
+               
+              FLASH CARD
+              </Text>
              <Text style={{
                  fontSize: 24, // Main Group Name in big size
                  fontWeight: 'bold', // Bold
                  marginBottom: 10, // Add spacing below
+                 color:'dodgerblue'
               }}>
+               
               {flashcards[flashcardId]?.mainGroup?.mainGroupName}
               </Text>
               <Text style={{
                   fontSize: 18, 
-                  marginBottom: 20
+                  marginBottom: 20,
+                  color:'dodgerblue'
              }}>
               {flashcards[flashcardId]?.mainGroup?.mainGroupDescription}
               </Text>
@@ -97,6 +109,7 @@ export const TermGroup = () => {
           <View style={{
               flexDirection: 'column', 
               alignItems: 'left', 
+              
           }}>
           {flashcards[flashcardId]?.termGroup.map((term, index) => (
             <View key={index} style={{
@@ -106,6 +119,8 @@ export const TermGroup = () => {
                   fontSize: 18,
                   fontWeight: 'bold', 
                   marginBottom: 10,
+                  color:'cyan',
+                  
               }}>{term?.termGroupName}</Text>
               <View style={{
                   flexDirection: 'row', 
