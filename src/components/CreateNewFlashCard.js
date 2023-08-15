@@ -22,7 +22,7 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
       ? flashcard.mainGroup
       : {
           mainGroupName: "",
-          mainGroupImage: "",
+          mainGroupImage: null,
           mainGroupDescription: "",
         };
   const initialTermGroup =
@@ -33,7 +33,7 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
           {
             termGroupName: "",
             termGroupDescription: "",
-            termGroupImage: "",
+            termGroupImage: null,
           },
         ];
 
@@ -70,10 +70,13 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
   };
 
   // Function to handle changes to term images
-  const handleTermImageChange = (index, imageFile) => {
+const handleTermImageChange = (index, imageFile) => {
+  const reader = new FileReader();
+  reader.onload = () => {
     const termGroupImage = {
       name: imageFile.name,
       termImageURL: URL.createObjectURL(imageFile),
+      termImage: reader.result,
     };
     formik.setFieldValue(`termGroup[${index}].termGroupImage`, termGroupImage);
 
@@ -81,16 +84,23 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
     updatedIsTermImageUploaded[index] = true;
     setIsTermImageUploaded(updatedIsTermImageUploaded);
   };
+  reader.readAsDataURL(imageFile);
+};
+
 
   // Function to handle changes to main group image
-  const handleMainImageChange = (event) => {
-    const imageFile = event.target.files[0];
+  const handleMainImageChange = (imageFile) => {
+    const reader = new FileReader()
+    reader.onload = () => {
     const mainGroupImage = {
       name: imageFile.name,
       mainImageURL: URL.createObjectURL(imageFile),
+      mainImage: reader.result,
     };
     formik.setFieldValue("mainGroup.mainGroupImage", mainGroupImage);
     setIsMainGroupImageUploaded(true);
+  }
+  reader.readAsDataURL(imageFile)
   };
 
   // Function to add a new term field to the form
@@ -150,7 +160,7 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
     onSubmit: handleSubmit,
   });
 
-  
+    
   return (
     // Form containing inputs for mainGroup, termGroup, and other features, and a submit button
     <form onSubmit={formik.handleSubmit}>
@@ -185,7 +195,7 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
               {/* Conditional Rendering for Main Group Image */}
               {isMainGroupImageUploaded ? (
                 <img
-                  src={formik.values.mainGroup.mainGroupImage.mainImageURL}
+                  src={formik.values.mainGroup.mainGroupImage.mainImage}
                   alt="Main Group"
                   className="w-44 h-14"
                 />
@@ -200,7 +210,7 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
                     name="mainGroupImage"
                     type="file"
                     accept="image/*"
-                    onChange={(event) => handleMainImageChange(event)}
+                    onChange={(event) => handleMainImageChange(event.target.files[0])}
                     onBlur={formik.handleBlur}
                   />
                 </label>
@@ -400,7 +410,7 @@ export const CreateNewFlashCard = ({ flashcard = {} }) => {
         initial={{ x: -1000 }}
         animate={{ x: 0 }}
         exit={{ x: -1000 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 0.5 }}
         className="fixed flex left-8  sm:z-10 inset-0 top-[90%] p-6 bg-green-600 rounded drop-shadow-lg max-w-fit max-h-5">
           
           <p className="flex items-center justify-center text-white text-sm font-bold gap-1"> <span>  Your flashcard has been created </span> <GiPartyPopper/> <GiPartyPopper/>  </p>

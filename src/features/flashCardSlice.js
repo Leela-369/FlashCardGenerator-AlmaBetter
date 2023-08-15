@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 // Retrieve data from local storage and parse it as JSON.
-const localStoreData = localStorage.getItem("addFlashcard");
+const localStoreData = localStorage.getItem("Flashcard");
 let parsedData = null;
 
 try {
@@ -30,14 +30,14 @@ const flashcardSlice = createSlice({
       // The newflashcard object is pushed to the 'flashcards' array in the state.
       state.flashcards.unshift(action.payload);
       //set the addFlashcard to the local storeage 
-      localStorage.setItem("addFlashcard", JSON.stringify(state.flashcards));
+      localStorage.setItem("Flashcard", JSON.stringify(state.flashcards));
     },
     deleteFlashcard: (state, action) => {
       const flashcardIndex = action.payload;
       // Remove the flashcard at the specified index from the state
       state.flashcards.splice(flashcardIndex, 1);
       // Update the local storage with the modified flashcards array
-      localStorage.setItem("addFlashcard", JSON.stringify(state.flashcards));
+      localStorage.setItem("Flashcard", JSON.stringify(state.flashcards));
     },
   },
 });

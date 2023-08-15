@@ -52,7 +52,7 @@ const displayedFlashcards = showAllCards ? flashcards : flashcards.slice(0, maxV
             <div key={flashcardIndex}  className='flex flex-shrink-0'>
               <div className='flex flex-col items-center'>
                 {/* Display the MainGroup Image */}
-              <img src={flashcard?.mainGroup?.mainGroupImage?.mainImageURL} alt='' className=' w-12 h-12 rounded-full z-10 position relative top-3 shadow-md'/>
+              <img src={flashcard?.mainGroup?.mainGroupImage?.mainImage} alt='' className=' w-12 h-12 rounded-full z-10 position relative top-3 shadow-md'/>
               <div className='bg-white w-72 h-48 flex flex-col space-y-2 items-center z-0'>
                 {/* Display the mainGroup Name */}
                 <h1 className='text-[15px] font-bold mt-8'>{flashcard?.mainGroup?.mainGroupName}</h1>
@@ -85,7 +85,7 @@ const displayedFlashcards = showAllCards ? flashcards : flashcards.slice(0, maxV
         initial={{ x: -1000 }}
         animate={{ x: 0 }}
         exit={{ x: -1000 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 0.5 }}
         className='fixed left-18 sm:left-10 max-h-fit max-w-fit bottom-8 z-50 p-1 bg-red-600 text-white rounded-md drop-shadow-md'>
         <p className=' flex items-center justify-center mr-2 text-sm lg:text-lg font-bold'> <AiFillDelete className='mr-4 text-sm lg:text-lg font-bold'/> Your Card is Deleted </p>
         </motion.div>

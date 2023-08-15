@@ -147,8 +147,83 @@ export const TermGroup = () => {
   }
   
     // Function to handle print of the created flashcard
-    const handlePrint = () => {
-      window.print();
+    const handlePrint = async () => {
+      const printPdfContent =  (
+        <Document >
+          <Page size="A4" style={{
+            padding: 30
+          }}>
+            <View style={{
+              flexDirection:'column',
+              marginBottom: 20,
+            }}>
+            <View style={{
+                flexDirection:'column',
+                alignItems:'center'
+               }}>
+               <Text style={{
+                   fontSize: 24, // Main Group Name in big size
+                   fontWeight: 'bold', // Bold
+                   marginBottom: 10, // Add spacing below
+                }}>
+                {flashcards[flashcardId]?.mainGroup?.mainGroupName}
+                </Text>
+                <Text style={{
+                    fontSize: 18, 
+                    marginBottom: 20
+               }}>
+                {flashcards[flashcardId]?.mainGroup?.mainGroupDescription}
+                </Text>
+            </View>
+            <View style={{
+                flexDirection: 'column', 
+                alignItems: 'left', 
+            }}>
+            {flashcards[flashcardId]?.termGroup.map((term, index) => (
+              <View key={index} style={{
+                marginBottom: 20,
+              }}>
+                <Text style={{
+                    fontSize: 18,
+                    fontWeight: 'bold', 
+                    marginBottom: 10,
+                }}>{term?.termGroupName}</Text>
+                <View style={{
+                    flexDirection: 'row', 
+                    }}>
+                <Image 
+                src={term?.termGroupImage?.termImageURL}
+  
+                style={{
+                  width: '180px',
+                  height: 'auto',
+                  marginRight: 10
+                }}
+                />
+                <Text style={{
+                     flex: 1, 
+                     fontSize: 14,
+                }}>
+                  {term?.termGroupDescription}</Text>
+                  </View>
+  
+              </View>
+  
+            ))}
+            </View>
+            </View>
+          </Page>
+        </Document>
+      )
+
+      const blob = await pdf(printPdfContent).toBlob();
+    const blobUrl = URL.createObjectURL(blob);
+    const printWindow = window.open(blobUrl)
+
+    if (printWindow) {
+      printWindow.print();
+    }
+      
     };    
 
      
@@ -216,7 +291,7 @@ export const TermGroup = () => {
           {/* Flashcard Image and Description */}
           <div className='bg-white flex flex-col  lg:flex-row w-full sm:w-full  lg:w-full h-80 p-3 items-center justify-center'>
             <motion.img
-              src={flashcards[flashcardId]?.termGroup[currentSlide]?.termGroupImage?.termImageURL}
+              src={flashcards[flashcardId]?.termGroup[currentSlide]?.termGroupImage?.termImage}
               className='ml-0 sm:ml-0 md:ml-4 lg:ml-4 w-auto sm:w-auto  lg:w-1/2 h-64 '
               alt='term img'
               initial={{ opacity: 0, x: 100  }}
