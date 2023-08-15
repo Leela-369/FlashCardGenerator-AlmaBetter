@@ -36,7 +36,7 @@ const handleDelete = (flashcardIndex) => {
 
   setTimeout(() => {
     setshowDeleteMessage(false)
-  },2000)
+  },1000)
 }
 
   // Determine which flashcards to display based on "showAllCards" state
