@@ -11,7 +11,7 @@ const schema = Yup.object().shape({
       
       mainGroupDescription: Yup.string()
       .required(" Description is required")
-      .matches(/^[a-zA-Z0-9!@#$%^&\s*,)(+=._-]/g, "Invalid characters")
+      .matches(/^[a-zA-Z0-9!@#$%^&*\s,)(+=._-]{12,500}$/g, "Invalid characters")
       .min(12, "Description atleast required 12 characters")
       .max(500, "Description can not exceeded 500 characters"),
       
