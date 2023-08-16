@@ -170,11 +170,12 @@ const handleTermImageChange = (index, imageFile) => {
           <div className="flex">
             <div className="w-2/3 sm:w-1/2  mr-4">
               {/* Input for Main Group Name */}
-              <p className="text-[13px] font-bold mb-2">Group Name</p>
+              <p className="text-[13px] font-bold mb-2">Create Group</p>
               <input
                 id="mainGroupName"
                 name="mainGroupName"
                 type="text"
+                placeholder="please enter group name"
                 className="px-3 py-2 border outline-gray-200 border-gray-400 h-9 w-full text-10px"
                 onChange={(event) =>
                   handleMainChange("mainGroupName", event.target.value)
@@ -201,7 +202,7 @@ const handleTermImageChange = (index, imageFile) => {
                 />
               ) : (
                 // File input for uploading Main Group Image
-                <label className="flex items-center justify-between mt-2 p-1 border border-gray-400 text-blue-600 text-[10px] sm:text-[13px] cursor-pointer rounded-md w-auto">
+                <label className="flex items-center justify-between mt-4 p-1 border border-gray-400 text-blue-600 text-[10px] sm:text-[13px] cursor-pointer rounded-md w-auto">
                   <span className="flex items-center justify-between gap-1 "> <FaFileUpload className="text-blue-600"/> <span>UploadImage</span></span>
                   <input
                   required
@@ -227,10 +228,11 @@ const handleTermImageChange = (index, imageFile) => {
           </div>
           <div className="mt-2 w-3/4">
             {/* Input for Main Group Description */}
-            <p className="font-bold text-[13px] mb-2">Description</p>
+            <p className="font-bold text-[13px] mb-2">Add Description</p>
             <textarea
               id="mainGroupDescription"
               name="mainGroupDescription"
+              placeholder="please enter group description"
               className="px-3 py-2 border outline-gray-200 border-gray-400 h-20 w-full text-[13px]"
               onChange={(event) =>
                 handleMainChange("mainGroupDescription", event.target.value)
@@ -275,12 +277,13 @@ const handleTermImageChange = (index, imageFile) => {
                     htmlFor={`termGroup[${index}].termGroupName`}
                     className="text-[13px] font-bold "
                   >
-                    Enter Term
+                  Enter Term
                   </label>
                   <input
                     id={`termGroup[${index}].termGroupName`}
                     name={`termGroup[${index}].termGroupName`}
                     type="text"
+                    placeholder="please enter term name"
                     onChange={(event) =>
                       handleTermChange(index, "termGroupName", event.target.value)
                     }
@@ -303,11 +306,12 @@ const handleTermImageChange = (index, imageFile) => {
                     htmlFor={`termGroup[${index}].termGroupDescription`}
                     className="text-[13px] font-bold"
                   >
-                    Enter Definition
+                   Enter Definition
                   </label>
                   <AutosizeTextarea
                     minRows={1}
                     maxRows={3}
+                    placeholder="please enter term description"
                     id={`termGroup[${index}].termGroupDescription`}
                     name={`termGroup[${index}].termGroupDescription`}
                     className="px-3 py-2 border outline-gray-200 rounded-sm border-gray-400 w-full text-[13px] mt-1 "

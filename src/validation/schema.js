@@ -23,13 +23,13 @@ const schema = Yup.object().shape({
       Yup.object().shape({
         termGroupName: Yup.string()
         .required("Term name is required")
-        .matches(/^[a-zA-Z0-9!@#$%^&,*)(+=._-]{3,20}$/g, "Invalid characters")
+        .matches(/^[a-zA-Z0-9!@#$%^&,* )(+=._-]{3,20}$/g, "Invalid characters")
         .min(3, "Term name atleast required 3 characters")
         .max(20, "Term name can not exceeded 20 characters"),
 
         termGroupDescription: Yup.string()
         .required("Term description is required")
-        .matches(/^[a-zA-Z0-9!@#$%^&,*)(+=._-]{12,500}$/g, "Invalid characters")
+        .matches(/^[a-zA-Z0-9!@#$%^&,* )(+=._-]{12,500}$/g, "Invalid characters")
         .min(12,"Term description atleast required 12 characters")
         .max(500, "Term description can not exceeded 500 characters"),
 
