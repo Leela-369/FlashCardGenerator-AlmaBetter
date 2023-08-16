@@ -304,10 +304,10 @@ export const TermGroup = () => {
           </div>
           <div className='flex flex-col items-center justify-center w-full'>
           {/* Flashcard Image and Description */}
-          <div className='bg-white flex flex-col  lg:flex-row w-full sm:w-full  lg:w-full h-80 p-3 items-center justify-center'>
+          <div className='bg-white flex flex-col md:flex-row w-full sm:w-full md:w-full min-h-80 p-3 items-center justify-between'>
             <motion.img
               src={flashcards[flashcardId]?.termGroup[currentSlide]?.termGroupImage?.termImage}
-              className='ml-0 sm:ml-0 md:ml-4 lg:ml-4 w-auto sm:w-auto  lg:w-1/2 h-64 '
+              className='ml-0 sm:ml-0 md:ml-4 lg:ml-4 md:max-w-[320px] md:max-h-[320px] object-fit'
               alt='term img'
               initial={{ opacity: 0, x: 100  }}
               animate={{ opacity: 1 , x: 0 }}
@@ -315,7 +315,7 @@ export const TermGroup = () => {
               transition={{duration: 1}}
 
             />
-            <p className='ml-4 text-[13px] w-1/2 h-72 mt-5'>
+            <p className='ml-4 text-[13px] min-w-1/2 max-h-fit mt-5'>
             {flashcards[flashcardId]?.termGroup[currentSlide]?.termGroupDescription}
             </p>
           </div>
@@ -337,19 +337,19 @@ export const TermGroup = () => {
       
           
           
-      <div className='flex flex-row lg:flex-col items-center justify-center lg:justify-normal sm:justify-center md:justify-center space-x-1  lg:space-y-3 lg:space-x-0'>
+      <div className='flex flex-row lg:flex-col items-center justify-center lg:justify-center sm:justify-center md:justify-center space-x-1  lg:space-y-3 lg:space-x-0'>
              {/* Share Button */}
-            <button className='w-20 lg:w-36 p-2 text-[10px] md:text-[15px] lg:text-[15px] text-black bg-white flex items-center space-x-2' onClick={handleShare} >
+            <button className='w-20 md:w-32 lg:w-36 p-2 text-[10px] md:text-[15px] lg:text-[15px] text-black bg-white flex items-center justify-center space-x-2' onClick={handleShare} >
             <TfiShare />
               <span >Share</span>
             </button>
              {/* Download Button */}
-            <button className='w-20 lg:w-36 p-2 text-[10px] md:text-[15px] lg:text-[15px] text-black bg-white flex items-center space-x-2' onClick={handleDownload} >
+            <button className='w-20 md:w-32 lg:w-36 p-2 text-[10px] md:text-[15px] lg:text-[15px] text-black bg-white flex items-center space-x-2 justify-center' onClick={handleDownload} >
             <AiOutlineDownload />
             <span >Download</span>
             </button>
             {/* Print Button */}
-            <button className='w-20 lg:w-36 p-2 text-[10px] md:text-[15px] lg:text-[15px] text-black bg-white flex items-center space-x-2' onClick={handlePrint} >
+            <button className='w-20 md:w-32 lg:w-36 p-2 text-[10px] md:text-[15px] lg:text-[15px] text-black bg-white flex items-center space-x-2 justify-center' onClick={handlePrint} >
             <AiOutlinePrinter />
             <span>Print</span>
             </button>
@@ -367,7 +367,7 @@ export const TermGroup = () => {
             </button>
             <h2 className='text-[15px] font-bold mt-4 ml-6'>Share</h2>
             <div className='flex flex-row'>
-              <input type='text' className='w-full p-2 text-[10px] ml-2 mt-6 mb-6 border border-grey-300' value=' https://example.com/flashcards  ' readOnly />
+              <input type='text' className='w-full p-2 text-[10px] ml-2 mt-6 mb-6 border border-grey-300' value={`${window.location.href}`} readOnly />
               {/* Copy button for the share link */}
               <button onClick={handleCopy} className='text-[13px]'>
               {isCopied ? <AiOutlineCheck /> : <AiOutlineCopy />}
