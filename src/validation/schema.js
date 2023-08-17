@@ -5,15 +5,15 @@ const schema = Yup.object().shape({
     mainGroup: Yup.object().shape({
       mainGroupName: Yup.string()
       .required("Group name is required")
-      .matches(/^[a-zA-Z0-9!@#$%^&*\s,)(+=._-]/g, "Invalid characters")
+      .matches(/^[a-zA-Z0-9!@#$%^&*()\s,;:'"+=_[\]{}<>/?\\`|~-]/g, "Invalid characters")
       .min(3,"Group name atleast required 3 characters")
-      .max(20, "Group name can not exceeded  20 characters"),
+      .max(32, "Group name can not exceeded  32 characters"),
       
       mainGroupDescription: Yup.string()
       .required(" Description is required")
-      .matches(/^[a-zA-Z0-9!@#$%^&*\s,)(+=._-]{12,500}$/g, "Invalid characters")
-      .min(12, "Description atleast required 12 characters")
-      .max(500, "Description can not exceeded 500 characters"),
+      .matches(/^[a-zA-Z0-9!@#$%^&*()\s,;:'"+=_[\]{}<>/?\\`|~-]/g, "Invalid characters")
+      .min(30, "Description atleast required 30 characters")
+      .max(300, "Description can not exceeded 300 characters"),
       
       mainGroupImage: Yup.mixed()
       .required(" Image is required ")
@@ -23,15 +23,15 @@ const schema = Yup.object().shape({
       Yup.object().shape({
         termGroupName: Yup.string()
         .required("Term name is required")
-        .matches(/^[a-zA-Z0-9!@#$%^&\s,*)(+=._-]/g, "Invalid characters")
+        .matches(/^[a-zA-Z0-9!@#$%^&*()\s,;:'"+=_[\]{}<>/?\\`|~-]/g, "Invalid characters")
         .min(3, "Term name atleast required 3 characters")
-        .max(20, "Term name can not exceeded 20 characters"),
+        .max(32, "Term name can not exceeded 32 characters"),
 
         termGroupDescription: Yup.string()
         .required("Term description is required")
-        .matches(/^[a-zA-Z0-9!@#$%^&,\s*)(+=._-]/g, "Invalid characters")
-        .min(12,"Term description atleast required 12 characters")
-        .max(500, "Term description can not exceeded 500 characters"),
+        .matches(/^[a-zA-Z0-9!@#$%^&*()\s,;:'"+=_[\]{}<>/?\\`|~-]/g, "Invalid characters")
+        .min(50,"Term description atleast required 50 characters")
+        .max(800, "Term description can not exceeded 800 characters"),
 
         termGroupImage: Yup.mixed()
         .required(" Image is required")
