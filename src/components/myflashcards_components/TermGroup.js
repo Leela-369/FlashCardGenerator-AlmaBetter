@@ -304,7 +304,7 @@ export const TermGroup = () => {
           </div>
           <div className='flex flex-col items-center justify-center w-full'>
           {/* Flashcard Image and Description */}
-          <div className='bg-white flex flex-col  lg:flex-row w-full h-80 p-3 items-center justify-center'>
+          <div className='bg-white flex flex-col  lg:flex-row w-full overflow-hidden min-h-80 p-3 items-center justify-center'>
             <motion.img
               src={flashcards[flashcardId]?.termGroup[currentSlide]?.termGroupImage?.termImage}
               className='  lg:w-1/2 w-[320px] h-[320px] lg:h-64 object-fit overflow-hidden '
@@ -314,7 +314,7 @@ export const TermGroup = () => {
               exit={{opacity: 0 , x: -100}}
               transition={{duration: 1}}
             />
-            <p className='ml-0 lg:ml-4 text-[13px] w-full lg:w-1/2 h-72 mt-5 break-all'>
+            <p className='relative bottom-5 top-3 ml-0 lg:ml-4 text-[13px] w-full lg:w-1/2 h-auto break-all'>
             {flashcards[flashcardId]?.termGroup[currentSlide]?.termGroupDescription}
             </p>
           </div>

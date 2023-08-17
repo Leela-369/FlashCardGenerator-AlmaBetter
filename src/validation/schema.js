@@ -31,7 +31,7 @@ const schema = Yup.object().shape({
         .required("Term description is required")
         .matches(/^[a-zA-Z0-9!@#$%^&*()\s,;:'"+=_[\]{}<>/?\\`|~-]/g, "Invalid characters")
         .min(50,"Term description atleast required 50 characters")
-        .max(800, "Term description can not exceeded 800 characters"),
+        .max(600, "Term description can not exceeded 600 characters"),
 
         termGroupImage: Yup.mixed()
         .required(" Image is required")
