@@ -173,6 +173,7 @@ const handleTermImageChange = (index, imageFile) => {
               <p className="text-[13px] font-bold mb-2">Group Name</p>
               <input
                 id="mainGroupName"
+                placeholder="please enter group name"
                 name="mainGroupName"
                 type="text"
                 className="px-3 py-2 border outline-gray-200 border-gray-400 h-9 w-full text-10px"
@@ -201,7 +202,7 @@ const handleTermImageChange = (index, imageFile) => {
                 />
               ) : (
                 // File input for uploading Main Group Image
-                <label className="flex items-center justify-between mt-2 p-1 border border-gray-400 text-blue-600 text-[10px] sm:text-[13px] cursor-pointer rounded-md w-auto">
+                <label className="flex items-center justify-between mt-4 p-1 border border-gray-400 text-blue-600 text-[10px] sm:text-[13px] cursor-pointer rounded-md w-auto">
                   <span className="flex items-center justify-between gap-1 "> <FaFileUpload className="text-blue-600"/> <span>UploadImage</span></span>
                   <input
                   required
@@ -230,6 +231,7 @@ const handleTermImageChange = (index, imageFile) => {
             <p className="font-bold text-[13px] mb-2">Description</p>
             <textarea
               id="mainGroupDescription"
+              placeholder="please enter group description"
               name="mainGroupDescription"
               className="px-3 py-2 border outline-gray-200 border-gray-400 h-20 w-full text-[13px]"
               onChange={(event) =>
@@ -281,6 +283,7 @@ const handleTermImageChange = (index, imageFile) => {
                     id={`termGroup[${index}].termGroupName`}
                     name={`termGroup[${index}].termGroupName`}
                     type="text"
+                    placeholder="please enter term name"
                     onChange={(event) =>
                       handleTermChange(index, "termGroupName", event.target.value)
                     }
@@ -308,6 +311,7 @@ const handleTermImageChange = (index, imageFile) => {
                   <AutosizeTextarea
                     minRows={1}
                     maxRows={3}
+                    placeholder="please enter term definition"
                     id={`termGroup[${index}].termGroupDescription`}
                     name={`termGroup[${index}].termGroupDescription`}
                     className="px-3 py-2 border outline-gray-200 rounded-sm border-gray-400 w-full text-[13px] mt-1 "
