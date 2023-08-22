@@ -1,70 +1,69 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Logo](https://www.almabetter.com/_next/image?url=https%3A%2F%2Falmablog-media.s3.ap-south-1.amazonaws.com%2FAlma_Better_Logo_4d9d929fe6.png&w=256&q=75)
 
-## Available Scripts
 
-In the project directory, you can run:
+# Flashcard Generator
 
-### `npm start`
+## Introduction
+Flashcard Generator website has been developed for the purpose of the creation and customisation of flashcards for multiple purposes regarding educational, professional or just for personal utility.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Features
 
-### `npm run build`
+- **Card Creation:** On the "CreateFlashCard" page, users can craft personalized flashcards by forming distinct "MainGroups" and "TermGroups." The "MainGroup" section allows the naming of the group, image upload, and description. The "TermGroup" section permits the input of term details, image selection, and dynamic addition of term groups using the "Add Term" button. The "Create Card" button generates a flashcard incorporating all provided data.
+- **Display of Cards:** By transitioning to the "MyFlashCards" page, users encounter a summarized card view, showcasing the main group's particulars. This includes the group name, description, and count of associated flashcards. By clicking the "View Cards" button, users access a detailed term group view. The created flashcards can also be removed if not required anymore.
+- **View, Export and Sharing:** Users can view and engage with each flashcard, leveraging the "Share," "Download," and "Print" buttons. Through the help of the react-pdf library, downloading and printing have been possible by converting the flashcard blob into pdf.
+- **Responsive Design:** The project is designed to work seamlessly across various devices and screen sizes, including desktop computers, tablets, and smartphones.
+- **Clean and Efficient UI / UX:** User Interface has been tailored according to the pre-determined criteria. Ensured clean UI and some out-of-the-box approach for better User Experience by conveying alert messages and framer motion animations at every step of the flashcard creation, exportation or deletion.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Tech Stack
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- React
+- Tailwind CSS
+- Redux Toolkit
+- React-Hook-Formi
+- React-pdf
+- Formik
+- Yup
+- React Icons
+## Run Locally
 
-### `npm run eject`
+Clone the project
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+  git clone https://github.com/Leela-369/FlashCardGenerator-AlmaBetter.git
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Go to the project directory
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+  cd FlashCardGenerator-Almabetter
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Install dependencies
 
-## Learn More
+```bash
+  npm install
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Start the server
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+  npm run start
+```
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Contributors
 
-### Analyzing the Bundle Size
+- Leela Santhosh [Github](https://github.com/Leela-369) | [LinkedIn](https://www.linkedin.com/in/leela-santhosh-758a56223/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Sathwic Raj [Github](https://www.github.com/sathwic97) | [LinkedIn](https://www.linkedin.com/in/sathwic-raj/)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Deployed website
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[website](https://flash-card-generator-alma-better-qv1d.vercel.app/)

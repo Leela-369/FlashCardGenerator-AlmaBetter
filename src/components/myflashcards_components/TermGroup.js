@@ -366,7 +366,7 @@ export const TermGroup = () => {
             </button>
             <h2 className='text-[15px] font-bold mt-4 ml-6'>Share</h2>
             <div className='flex flex-row'>
-              <input type='text' className='w-full p-2 text-[10px] ml-2 mt-6 mb-6 border border-grey-300' value=' https://example.com/flashcards  ' readOnly />
+              <input type='text' className='w-full p-2 text-[10px] ml-2 mt-6 mb-6 border border-grey-300' value={window.location.href} readOnly />
               {/* Copy button for the share link */}
               <button onClick={handleCopy} className='text-[13px]'>
               {isCopied ? <AiOutlineCheck /> : <AiOutlineCopy />}
